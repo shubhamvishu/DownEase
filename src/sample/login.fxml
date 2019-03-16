@@ -111,27 +111,27 @@
                                           </HBox>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/user%20(3).png" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@img/envelope.png" />
+                                                <Image url="@img/user3.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/call-answer.png" />
+                                                <Image url="@img/tele1.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/maps-and-flags.png" />
+                                                <Image url="@img/loc3.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@img/businessman.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/black-envelope.png" />
                                              </image>
                                           </ImageView>
                                        </children>

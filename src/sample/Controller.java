@@ -93,7 +93,7 @@ public class Controller implements Initializable{
             hb.getChildren().addAll(lb,im);
             content.setStyle("-fx-background-color:#ddd;-fx-pref-width:250px;-fx-pref-height:50px;-fx-text-fill:#000;-fx-text-color:#000;");
             content.setBody(hb);
-            JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.LEFT);
+            JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.TOP);
             dialog.setContent(content);
             JFXButton button = new JFXButton("Okay");
             button.setStyle("-fx-background-color:#333;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -109,13 +109,18 @@ public class Controller implements Initializable{
         }
         else{
             System.out.println("Incorrect");
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setBody(new Label("Wrong OTP"));
+            JFXDialogLayout content=new JFXDialogLayout();
+            HBox hb=new HBox();
+            Label lb=new Label("Authentication failed");
+            lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
+            lb.setMinWidth(200);
+            hb.getChildren().addAll(lb);
+            content.setStyle("-fx-background-color:#ddd;-fx-pref-width:250px;-fx-pref-height:50px;-fx-text-fill:#000;-fx-text-color:#000;");
+            content.setBody(hb);
             JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.LEFT);
-            content.setStyle("-fx-background-color:#2ECC71;-fx-pref-width:150px;-fx-pref-height:50px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
             dialog.setContent(content);
             JFXButton button = new JFXButton("Okay");
-            button.setStyle("-fx-background-color:#fff;-fx-text-fill:#000;-fx-font-weight:bold;-fx-pref-width:150px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+            button.setStyle("-fx-background-color:#1ABC9C;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {

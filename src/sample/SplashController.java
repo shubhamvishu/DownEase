@@ -29,23 +29,19 @@ public class SplashController implements Initializable {
         {
             try{
                 System.out.println("Ready");
-                Thread.sleep(2000);
+                Thread.sleep(4000);
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         try{
-                            System.out.println("Meeee");
+
                             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-                            System.out.println("A");
                             Stage primaryStage=new Stage();
-                            System.out.println("B");
                             Scene scene=new Scene(root);
                             primaryStage.setTitle("Hello World");
                             primaryStage.resizableProperty().setValue(false);
                             primaryStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
-                            System.out.println("C");
                             primaryStage.setScene(scene);
-                            System.out.println("D");
                             primaryStage.show();
                             rootPane.getScene().getWindow().hide();
                         } catch (IOException e) {

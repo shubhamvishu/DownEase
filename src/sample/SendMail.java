@@ -42,7 +42,7 @@ public class SendMail {
 
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-            message.setSubject("The Galleria Mall");
+            message.setSubject("DownEase Verification");
 
             BodyPart messageBodyPart1 = new MimeBodyPart();
             messageBodyPart1.setText(msg);
