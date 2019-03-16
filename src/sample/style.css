@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+.jfx-button2{
+	-fx-background-color:#0090ff;
+	-fx-border-color:#0090ff;
+	-fx-border-width:3px;
+	-fx-border-radius:20px;
+	-fx-background-radius:20px;
+	-fx-text-fill:#fff;
+	-fx-font-weight:bold;
+
+}
+
+.jfx-button2:hover{
+	-fx-background-color:#263238;
+	-fx-border-color:#0090ff;
+	-fx-border-width:3px;
+	-fx-border-radius:20px;
+	-fx-background-radius:20px;
+	-fx-text-fill:#fff;
+	-fx-font-weight:bold;
+
+}
+.label{
+	-fx-font-weight:bold;
+	-fx-font-size:30px;
+	-fx-font-family: 'Alfa Slab One', cursive;
+	-fx-text-fill:#fff;
+}
+.menu-btn{
+	-fx-background-color: #17202A;
+	-fx-text-fill:#8EA9C7;
+	-fx-font-family: 'Alfa Slab One', cursive;
+	-fx-font-weight:bold;
+}
+.menu-btn:hover{
+	-fx-text-fill:#8EA9C7;
+	-fx-font-family: 'Alfa Slab One', cursive;
+	-fx-font-weight:bold;
+	-fx-background-color:#333;
+}
+
+.loginhead{
+	-fx-text-fill:#888;
+	-fx-font-weight:bold;
+	-fx-border-width:3px;
+	-fx-border-color:#888;
+	-fx-border-radius:10px;
+	-fx-font-size:25px;
+	-fx-text-align:center;
+}
+.splashlabel{
+	-fx-font-weight:bold;
+	-fx-font-family:'Alfa Slab One', cursive;
+	-fx-font-size:70px;
+}
+.loginlabel{
+	-fx-font-weight:bold;
+	-fx-font-family:'Alfa Slab One', cursive;
+	-fx-font-size:40px;
+}
+.loginfield{
+	-fx-text-fill:#ddd;
+	-fx-prompt-text-fill:#ddd;
+	-fx-text-color:#fff;
+}
+.signuptextfield{
+	-fx-background-color:#17202A;
+	-fx-text-fill:#ddd;
+	-fx-prompt-text-fill:#aaa;
+	-fx-border-radius:50px;
+	-fx-background-radius:50px;
+	-fx-focus-color: transparent;
+	-fx-unfocus-color: transparent;
+}
+
