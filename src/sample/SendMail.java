@@ -15,7 +15,7 @@ import java.util.Properties;
 public class SendMail {
 
     String to ;
-    String from = "shubhmasand@gmail.com";
+    String from = "amrita002010@gmail.com";
     String msg;
     public SendMail(String t,String str) {
         to = t;
@@ -31,7 +31,7 @@ public class SendMail {
         properties.put("mail.smtp.port", 587);
         Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("shubhmasand@gmail.com", "shubhammasand*89911131");
+                return new PasswordAuthentication("amrita002010@gmail.com", "RahuL@0209");
             }
 
         });

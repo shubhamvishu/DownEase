@@ -68,7 +68,7 @@ public class Controller implements Initializable{
         otp=String.valueOf(rand.nextInt(10000));
         System.out.println("otp:"+otp);
         if(emailid.getText()!=null && emailid.getText().endsWith("@gmail.com")) {
-            //SendMail send = new SendMail(emailid.getText(), otp);
+            SendMail send = new SendMail(emailid.getText(), otp);
         }
         else{
             Alert al=new Alert(Alert.AlertType.ERROR);
@@ -87,7 +87,7 @@ public class Controller implements Initializable{
             Label lb=new Label("Success");
             lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
             lb.setMinWidth(200);
-            ImageView im=new ImageView(new Image("sample/img/checked.png"));
+            ImageView im=new ImageView(new Image("sample/img/success.png"));
             im.setFitWidth(50);
             im.setFitHeight(50);
             hb.getChildren().addAll(lb,im);
