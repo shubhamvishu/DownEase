@@ -15,6 +15,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -66,12 +67,10 @@
                                  <children>
                                     <AnchorPane fx:id="signup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="456.0" style="-fx-background-color: #263238;">
                                        <children>
-                                          <JFXButton fx:id="signupbtn" layoutX="72.0" layoutY="485.0" onAction="#newuser" prefHeight="40.0" prefWidth="105.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@style.css" text="Sign Up" />
+                                          <JFXButton fx:id="signupbtn" layoutX="226.0" layoutY="492.0" onAction="#checkuser" prefHeight="40.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@style.css" text="Sign Up" />
                                           <JFXColorPicker layoutX="178.0" layoutY="558.0" promptText="Choose Color" />
-                                          <JFXButton fx:id="check" layoutX="285.0" layoutY="485.0" onAction="#checkuser" prefHeight="40.0" prefWidth="105.0" styleClass="jfx-button2" stylesheets="@style.css" text="Log Out" />
-                                          <JFXCheckBox checkedColor="#6593ee" layoutX="81.0" layoutY="440.0" style="-fx-text-fill: #888;" text="Remember Me" unCheckedColor="#5663b2" />
-                                          <Label fx:id="lab2" alignment="CENTER" layoutX="176.0" layoutY="14.0" prefHeight="44.0" prefWidth="132.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@style.css" text="Sign Up" />
-                                          <TextField fx:id="name" layoutX="79.0" layoutY="90.0" prefHeight="26.0" prefWidth="304.0" promptText=" Name" styleClass="signuptextfield" stylesheets="@style.css">
+                                          <Label fx:id="lab2" alignment="CENTER" layoutX="151.0" layoutY="14.0" prefHeight="44.0" prefWidth="160.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@style.css" text="Sign Up" />
+                                          <TextField fx:id="name" layoutX="74.0" layoutY="91.0" prefHeight="26.0" prefWidth="304.0" promptText=" Name" styleClass="signuptextfield" stylesheets="@style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
@@ -96,6 +95,16 @@
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </TextField>
+                                          <HBox layoutX="78.0" layoutY="432.0" prefHeight="40.0" prefWidth="304.0">
+                                             <children>
+                                                <JFXTextField fx:id="otpverify" focusColor="#21cfff" labelFloat="true" prefHeight="40.0" prefWidth="211.0" promptText="OTP" style="-fx-text-fill: #fff;" unFocusColor="#cdcdcd">
+                                                   <HBox.margin>
+                                                      <Insets right="15.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                                <JFXButton fx:id="send" onAction="#newuser" prefHeight="42.0" prefWidth="103.0" ripplerFill="#ffca21" style="-fx-background-color: #ebeb15;" text="Send OTP" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                        <effect>
                                           <Blend />
