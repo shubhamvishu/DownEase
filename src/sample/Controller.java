@@ -81,9 +81,12 @@ public class Controller implements Initializable{
             if(u.authenticate())
             {
                 System.out.println("Login succesfull");
+                successSignUp();
+                logout.setDisable(true);
             }
             else{
                 System.out.println("Login failed");
+                failedSignUp();
             }
         }
         else{
@@ -120,6 +123,7 @@ public class Controller implements Initializable{
             failedSignUp();
         }
     }
+
     public void chooseUserPass()
     {
         User curr=new User(name.getText(),emailid.getText(),phno.getText(),loc.getText(),occ.getText());
@@ -158,6 +162,7 @@ public class Controller implements Initializable{
                             curr.addNewUser();
                             dialog.close();
                             successSignUp();
+                            clearSignUp();
                         }
 
                     }
@@ -203,7 +208,7 @@ public class Controller implements Initializable{
     }
     public void failedSignUp()
     {
-        System.out.println("Incorrect");
+        System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
         Label lb=new Label("Authentication failed");
@@ -225,11 +230,21 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-
+    public void clearSignUp()
+    {
+        otp="";
+        otpverify.clear();
+        name.clear();
+        emailid.clear();
+        phno.clear();
+        loc.clear();
+        occ.clear();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         user.setText("");
         pwd.setText("");
+        logout.setDisable(true);
         /*ImageView imvw=new ImageView(new Image("sample/img/user.png"));
         imvw.setFitHeight(30);
         imvw.setFitWidth(30);
