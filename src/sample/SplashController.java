@@ -31,11 +31,12 @@ public class SplashController implements Initializable {
                 System.out.println("Ready");
                 Thread.sleep(4000);
                 Platform.runLater(new Runnable() {
+
                     @Override
                     public void run() {
                         try{
 
-                            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getResource("design/login.fxml"));
                             Stage primaryStage=new Stage();
                             Scene scene=new Scene(root);
                             primaryStage.setTitle("Hello World");

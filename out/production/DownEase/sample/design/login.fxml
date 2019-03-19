@@ -30,25 +30,25 @@
                      <children>
                         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="456.0" style="-fx-background-color: #263238; -fx-text-fill: #8EA9C7; -fx-font-family: 'Alfa Slab One', cursive;">
                            <children>
-                              <JFXButton layoutX="75.0" layoutY="325.0" prefHeight="40.0" prefWidth="105.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@style.css" text="Sign In" />
+                              <JFXButton fx:id="signin" layoutX="75.0" layoutY="325.0" onAction="#login" prefHeight="40.0" prefWidth="105.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@../style.css" text="Sign In" />
                               <JFXColorPicker layoutX="183.0" layoutY="416.0" promptText="Choose Color" />
-                              <JFXTextField focusColor="#0e89eb" labelFloat="true" layoutX="81.0" layoutY="92.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" styleClass="loginfield" stylesheets="@style.css" unFocusColor="#888888">
+                              <JFXTextField fx:id="user" focusColor="#0e89eb" labelFloat="true" layoutX="81.0" layoutY="92.0" prefHeight="26.0" prefWidth="300.0" promptText="Username" styleClass="loginfield" stylesheets="@../style.css" unFocusColor="#888888">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </JFXTextField>
-                              <JFXPasswordField focusColor="#03aaf8" labelFloat="true" layoutX="81.0" layoutY="190.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" styleClass="loginfield" stylesheets="@style.css" unFocusColor="#888888" />
-                              <JFXButton layoutX="288.0" layoutY="325.0" prefHeight="40.0" prefWidth="105.0" styleClass="jfx-button2" stylesheets="@style.css" text="Log Out" />
+                              <JFXPasswordField fx:id="pwd" focusColor="#03aaf8" labelFloat="true" layoutX="81.0" layoutY="190.0" prefHeight="26.0" prefWidth="300.0" promptText="Password" styleClass="loginfield" stylesheets="@../style.css" unFocusColor="#888888" />
+                              <JFXButton fx:id="logout" disable="true" layoutX="288.0" layoutY="325.0" prefHeight="40.0" prefWidth="105.0" styleClass="jfx-button2" stylesheets="@../style.css" text="Logout" />
                               <JFXCheckBox checkedColor="#6593ee" layoutX="83.0" layoutY="260.0" style="-fx-text-fill: #888;" text="Remember Me" unCheckedColor="#5663b2" />
-                              <Label alignment="CENTER" layoutX="146.0" layoutY="14.0" prefHeight="44.0" prefWidth="132.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@style.css" text="Login" />
+                              <Label alignment="CENTER" layoutX="146.0" layoutY="14.0" prefHeight="44.0" prefWidth="132.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@../style.css" text="Login" />
                               <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="30.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@img/user.png" />
+                                    <Image url="@../img/user.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="30.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@img/locked.png" />
+                                    <Image url="@../img/locked.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -67,30 +67,30 @@
                                  <children>
                                     <AnchorPane fx:id="signup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="456.0" style="-fx-background-color: #263238;">
                                        <children>
-                                          <JFXButton fx:id="signupbtn" layoutX="226.0" layoutY="492.0" onAction="#checkuser" prefHeight="40.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@style.css" text="Sign Up" />
+                                          <JFXButton fx:id="signupbtn" layoutX="226.0" layoutY="492.0" onAction="#checkuser" prefHeight="40.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="jfx-button2" stylesheets="@../style.css" text="Sign Up" />
                                           <JFXColorPicker layoutX="178.0" layoutY="558.0" promptText="Choose Color" />
-                                          <Label fx:id="lab2" alignment="CENTER" layoutX="151.0" layoutY="14.0" prefHeight="44.0" prefWidth="160.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@style.css" text="Sign Up" />
-                                          <TextField fx:id="name" layoutX="74.0" layoutY="91.0" prefHeight="26.0" prefWidth="304.0" promptText=" Name" styleClass="signuptextfield" stylesheets="@style.css">
+                                          <Label fx:id="lab2" alignment="CENTER" layoutX="151.0" layoutY="14.0" prefHeight="44.0" prefWidth="160.0" style="-fx-text-fill: #bbb;" styleClass="loginhead" stylesheets="@../style.css" text="Sign Up" />
+                                          <TextField fx:id="name" layoutX="74.0" layoutY="91.0" prefHeight="26.0" prefWidth="304.0" promptText=" Name" styleClass="signuptextfield" stylesheets="@../style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="emailid" layoutX="76.0" layoutY="165.0" prefHeight="26.0" prefWidth="304.0" promptText=" Email Id" styleClass="signuptextfield" stylesheets="@style.css">
+                                          <TextField fx:id="emailid" layoutX="76.0" layoutY="165.0" prefHeight="26.0" prefWidth="304.0" promptText=" Email Id" styleClass="signuptextfield" stylesheets="@../style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="phno" layoutX="78.0" layoutY="234.0" prefHeight="26.0" prefWidth="304.0" promptText="Phone No." styleClass="signuptextfield" stylesheets="@style.css">
+                                          <TextField fx:id="phno" layoutX="78.0" layoutY="234.0" prefHeight="26.0" prefWidth="304.0" promptText="Phone No." styleClass="signuptextfield" stylesheets="@../style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="loc" layoutX="78.0" layoutY="307.0" prefHeight="26.0" prefWidth="304.0" promptText="Location" styleClass="signuptextfield" stylesheets="@style.css">
+                                          <TextField fx:id="loc" layoutX="78.0" layoutY="307.0" prefHeight="26.0" prefWidth="304.0" promptText="Location" styleClass="signuptextfield" stylesheets="@../style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="age" layoutX="76.0" layoutY="379.0" prefHeight="26.0" prefWidth="304.0" promptText="Occupation" styleClass="signuptextfield" stylesheets="@style.css">
+                                          <TextField fx:id="occ" layoutX="76.0" layoutY="379.0" prefHeight="26.0" prefWidth="304.0" promptText="Occupation" styleClass="signuptextfield" stylesheets="@../style.css">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
@@ -111,27 +111,27 @@
                                           </HBox>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/user3.png" />
+                                                <Image url="@../img/user3.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/tele1.png" />
+                                                <Image url="@../img/tele1.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/loc3.png" />
+                                                <Image url="@../img/loc3.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/businessman.png" />
+                                                <Image url="@../img/businessman.png" />
                                              </image>
                                           </ImageView>
                                           <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/black-envelope.png" />
+                                                <Image url="@../img/black-envelope.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -154,10 +154,10 @@
       </JFXTabPane>
       <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="60.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 40px;">
          <image>
-            <Image url="@img/space.png" />
+            <Image url="@../img/space.png" />
          </image>
       </ImageView>
-      <Label layoutX="161.0" layoutY="48.0" prefHeight="61.0" prefWidth="241.0" styleClass="loginlabel" stylesheets="@style.css" text="DownEase" />
+      <Label layoutX="161.0" layoutY="48.0" prefHeight="61.0" prefWidth="241.0" styleClass="loginlabel" stylesheets="@../style.css" text="DownEase" />
       <Line endX="322.0" endY="1.0" layoutX="133.0" layoutY="128.0" startX="-133.0" startY="1.0" stroke="#263238" />
    </children>
 </AnchorPane>

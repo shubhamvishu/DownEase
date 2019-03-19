@@ -12,16 +12,16 @@
    <children>
       <ImageView fitHeight="415.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/color4.png" />
+            <Image url="@../img/color4.png" />
          </image>
       </ImageView>
-      <Label prefHeight="117.0" prefWidth="432.0" style="-fx-text-fill: #eee;" styleClass="splashlabel" stylesheets="@style.css" text="DownEase">
+      <Label prefHeight="117.0" prefWidth="432.0" style="-fx-text-fill: #eee;" styleClass="splashlabel" stylesheets="@../style.css" text="DownEase">
          <StackPane.margin>
             <Insets left="70.0" top="-150.0" />
          </StackPane.margin></Label>
       <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/space.png" />
+            <Image url="@../img/space.png" />
          </image>
          <StackPane.margin>
             <Insets bottom="200.0" left="-520.0" />
