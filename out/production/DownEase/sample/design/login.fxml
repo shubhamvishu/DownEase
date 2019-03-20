@@ -20,12 +20,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="455.0" style="-fx-background-color: #263238;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="455.0" style="-fx-background-color: #263238;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <JFXTabPane layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="455.0" side="BOTTOM">
          <tabs>
             <Tab style="-fx-pref-width: 222;" text="Login">
                <content>
+                  <StackPane fx:id="stack1">
+                     <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="498.0">
                      <children>
                         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="456.0" style="-fx-background-color: #263238; -fx-text-fill: #8EA9C7; -fx-font-family: 'Alfa Slab One', cursive;">
@@ -55,6 +57,8 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
+                     </children>
+                  </StackPane>
                </content>
             </Tab>
             <Tab style="-fx-pref-width: 222;" text="Sign Up">
@@ -63,7 +67,7 @@
                      <children>
                         <ScrollPane prefHeight="457.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <StackPane fx:id="stack">
+                              <StackPane fx:id="stack2">
                                  <children>
                                     <AnchorPane fx:id="signup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="456.0" style="-fx-background-color: #263238;">
                                        <children>
@@ -157,7 +161,7 @@
             <Image url="@../img/space.png" />
          </image>
       </ImageView>
-      <Label layoutX="161.0" layoutY="48.0" prefHeight="61.0" prefWidth="241.0" styleClass="loginlabel" stylesheets="@../style.css" text="DownEase" />
+      <Label layoutX="160.0" layoutY="41.0" prefHeight="61.0" prefWidth="241.0" styleClass="loginlabel" stylesheets="@../style.css" text="DownEase" />
       <Line endX="322.0" endY="1.0" layoutX="133.0" layoutY="128.0" startX="-133.0" startY="1.0" stroke="#263238" />
    </children>
 </AnchorPane>

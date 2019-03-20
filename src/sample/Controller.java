@@ -28,7 +28,9 @@ public class Controller implements Initializable{
 
     private String otp=null;
     @FXML
-    private StackPane stack;
+    private StackPane stack1;
+    @FXML
+    private StackPane stack2;
     @FXML
     private JFXButton signin;
 
@@ -81,12 +83,12 @@ public class Controller implements Initializable{
             if(u.authenticate())
             {
                 System.out.println("Login succesfull");
-                successSignUp();
+                successSignUp(stack1,"Login succesfull");
                 logout.setDisable(true);
             }
             else{
                 System.out.println("Login failed");
-                failedSignUp();
+                failedSignUp(stack1,"Login failed");
             }
         }
         else{
@@ -120,7 +122,7 @@ public class Controller implements Initializable{
             chooseUserPass();
         }
         else{
-            failedSignUp();
+            failedSignUp(stack2,"Wrong details");
         }
     }
 
@@ -138,7 +140,7 @@ public class Controller implements Initializable{
         vb.getChildren().addAll(username,pwd1,pwd2);
         vb.setMinWidth(300);
         content.setBody(vb);
-        JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.LEFT);
+        JFXDialog dialog = new JFXDialog(stack2, content, JFXDialog.DialogTransition.LEFT);
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#1ABC9C;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -154,20 +156,20 @@ public class Controller implements Initializable{
                         if(curr.authenticate())
                         {
                             System.out.println("Signin failed...already exits");
-                            failedSignUp();
+                            failedSignUp(stack2,"Record Exists");
 
                         }
                         else{
-                            System.out.println("Signin succesfull");
+                            System.out.println();
                             curr.addNewUser();
                             dialog.close();
-                            successSignUp();
+                            successSignUp(stack2,"Signin succesfull");
                             clearSignUp();
                         }
 
                     }
                     else{
-                        failedSignUp();
+                        failedSignUp(stack2,"Wrong username/password");
                         System.out.println("Not Macthing");
                     }
                     // Thread.sleep(2000);
@@ -179,11 +181,11 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-    public void successSignUp()
+    public void successSignUp(StackPane stackPane,String str)
     {
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
-        Label lb=new Label("Success");
+        Label lb=new Label(str);
         lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
         lb.setMinWidth(200);
         ImageView im=new ImageView(new Image("sample/img/success.png"));
@@ -192,7 +194,7 @@ public class Controller implements Initializable{
         hb.getChildren().addAll(lb,im);
         content.setStyle("-fx-background-color:#ddd;-fx-pref-width:250px;-fx-pref-height:50px;-fx-text-fill:#000;-fx-text-color:#000;");
         content.setBody(hb);
-        JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.TOP);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#333;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -206,18 +208,18 @@ public class Controller implements Initializable{
         dialog.show();
         System.out.println("Correct");
     }
-    public void failedSignUp()
+    public void failedSignUp(StackPane stackPane,String str)
     {
         System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
-        Label lb=new Label("Authentication failed");
+        Label lb=new Label(str);
         lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
         lb.setMinWidth(200);
         hb.getChildren().addAll(lb);
         content.setStyle("-fx-background-color:#ddd;-fx-pref-width:250px;-fx-pref-height:50px;-fx-text-fill:#000;-fx-text-color:#000;");
         content.setBody(hb);
-        JFXDialog dialog = new JFXDialog(stack, content, JFXDialog.DialogTransition.LEFT);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.LEFT);
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#1ABC9C;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
