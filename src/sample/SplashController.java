@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class SplashController implements Initializable {
 
+    public static Stage loginStage=new Stage();
     @FXML
     private StackPane rootPane;
 
@@ -37,13 +38,12 @@ public class SplashController implements Initializable {
                         try{
 
                             Parent root = FXMLLoader.load(getClass().getResource("design/login.fxml"));
-                            Stage primaryStage=new Stage();
                             Scene scene=new Scene(root);
-                            primaryStage.setTitle("Hello World");
-                            primaryStage.resizableProperty().setValue(false);
-                            primaryStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
-                            primaryStage.setScene(scene);
-                            primaryStage.show();
+                            loginStage.setTitle("Hello World");
+                            loginStage.resizableProperty().setValue(false);
+                            loginStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
+                            loginStage.setScene(scene);
+                            loginStage.show();
                             rootPane.getScene().getWindow().hide();
                         } catch (IOException e) {
                             e.printStackTrace();

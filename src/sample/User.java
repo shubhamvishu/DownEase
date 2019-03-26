@@ -67,6 +67,7 @@ public class User {
         try {
             DbConnect db = new DbConnect();
             Connection conn = db.getConnection();
+            System.out.println("insert into user(username,password,name,email,phno,loc,occ) values('"+this.user+"','"+this.pass+"','"+this.name+"','"+this.emailid+"','"+this.phno+"','"+this.loc+"','"+this.occ+"');");
             PreparedStatement pst = conn.prepareStatement("insert into user(username,password,name,email,phno,loc,occ) values('"+this.user+"','"+this.pass+"','"+this.name+"','"+this.emailid+"','"+this.phno+"','"+this.loc+"','"+this.occ+"');");
             pst.executeUpdate();
             System.out.println("User Addded");

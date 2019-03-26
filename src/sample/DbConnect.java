@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DbConnect {
 
-    private static String url="jdbc:mysql://localhost:3306/downease";
+    private static String url="jdbc:mysql://localhost:3306/downease?useSSL=false";
     private static String user="root";
     private static String pass="shubham";
 

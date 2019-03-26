@@ -4,21 +4,24 @@ import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -26,19 +29,27 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
 
+    Main main=new Main();
+
+    public static Stage primaryStage=new Stage();
+
     private String otp=null;
     @FXML
     private StackPane stack1;
     @FXML
     private StackPane stack2;
-    @FXML
-    private JFXButton signin;
 
     @FXML
     private JFXTextField user=null;
 
     @FXML
     private JFXPasswordField pwd=null;
+
+    @FXML
+    private CheckBox checkbox;
+
+    @FXML
+    private JFXButton signin;
 
     @FXML
     private JFXButton logout;
@@ -73,9 +84,8 @@ public class Controller implements Initializable{
     private JFXTextField otpverify;
 
     private String tempMail;
-    @FXML
-    void login(ActionEvent event)
-    {
+
+    public void login() throws IOException {
 
         if(!(user.getText().isEmpty()) && !(pwd.getText().isEmpty()))
         {   //System.out.println("shubham");
@@ -85,6 +95,16 @@ public class Controller implements Initializable{
                 System.out.println("Login succesfull");
                 successSignUp(stack1,"Login succesfull");
                 logout.setDisable(true);
+                if(!checkbox.isSelected()) {
+                    SplashController.loginStage.close();
+                    
+                }
+                Parent root = FXMLLoader.load(getClass().getResource("design/mainscreen.fxml"));
+                System.out.println("yoyoyooyo");
+                primaryStage.setTitle("DownEase");
+                //primaryStage.initStyle(StageStyle.UNDECORATED);
+                primaryStage.setScene(new Scene(root));
+                primaryStage.show();
             }
             else{
                 System.out.println("Login failed");
