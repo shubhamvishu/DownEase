@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="a1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="900.0" style="-fx-background-color: #212F3D;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainScreenController">
     <children>
-      <Label layoutX="96.0" layoutY="8.0" prefHeight="40.0" prefWidth="288.0" text="DownEase" textFill="WHITE">
+      <Label layoutX="96.0" layoutY="8.0" prefHeight="40.0" prefWidth="288.0" styleClass="loginlabel" stylesheets="@../style.css" text="DownEase" textFill="WHITE">
          <font>
             <Font name="Noto Sans Mono CJK TC Bold" size="48.0" />
          </font>
@@ -28,7 +28,7 @@
       </ImageView>
       <StackPane layoutY="84.0">
          <children>
-            <JFXTabPane fx:id="side1" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <JFXTabPane fx:id="docApp" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Doc generator">
                      <content>
@@ -38,8 +38,8 @@
                                  <children>
                                     <AnchorPane prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #eee;">
                                        <children>
-                                          <JFXListView fx:id="list2" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="628.0" />
-                                          <JFXButton fx:id="add2" layoutX="394.0" layoutY="88.0" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #888;" text="Add 2">
+                                          <JFXListView fx:id="docList" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="628.0" />
+                                          <JFXButton fx:id="add2" layoutX="394.0" layoutY="88.0" onAction="#addnew2" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #888;" text="Add 2">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
@@ -54,7 +54,7 @@
                   </Tab>
                </tabs>
             </JFXTabPane>
-            <JFXTabPane fx:id="side2" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <JFXTabPane fx:id="imgApp" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Image Download">
                      <content>
@@ -68,15 +68,15 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <AnchorPane prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #F5EFFB;">
+                                                      <AnchorPane prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                          <children>
-                                                            <JFXListView fx:id="list1" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #333;" />
-                                                            <JFXButton fx:id="down1" layoutX="250.0" layoutY="86.0" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #4ed64e;" text="Download 1" textFill="#f9fffb">
+                                                            <JFXListView fx:id="imgList" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #111;" />
+                                                            <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="86.0" onAction="#downloadImg" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font>
                                                             </JFXButton>
-                                                            <TextField fx:id="search" layoutX="250.0" layoutY="32.0" prefHeight="33.0" prefWidth="387.0" promptText="   Search Image" style="-fx-background-radius: 20px; -fx-background-color: #666; -fx-text-fill: #fff;">
+                                                            <TextField fx:id="searchImg" layoutX="250.0" layoutY="32.0" prefHeight="33.0" prefWidth="387.0" promptText="   Search Image" style="-fx-background-radius: 20px; -fx-background-color: #666; -fx-text-fill: #fff;">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font>

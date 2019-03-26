@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,7 +30,6 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
 
-    Main main=new Main();
 
     public static Stage primaryStage=new Stage();
 
@@ -84,35 +84,38 @@ public class Controller implements Initializable{
     private JFXTextField otpverify;
 
     private String tempMail;
+    private boolean isdialogopen=false;
 
-    public void login() throws IOException {
+    @FXML
+    private void login(ActionEvent event) throws IOException ,InterruptedException{
 
-        if(!(user.getText().isEmpty()) && !(pwd.getText().isEmpty()))
-        {   //System.out.println("shubham");
-            User u=new User(user.getText(),pwd.getText());
-            if(u.authenticate())
-            {
-                System.out.println("Login succesfull");
-                successSignUp(stack1,"Login succesfull");
-                logout.setDisable(true);
-                if(!checkbox.isSelected()) {
-                    SplashController.loginStage.close();
-                    
+        try {
+            if (!(user.getText().isEmpty()) && !(pwd.getText().isEmpty())) {   //System.out.println("shubham");
+                User u = new User(user.getText(), pwd.getText());
+                if (u.authenticate()) {
+                    System.out.println("Login succesfull");
+                    successSignUp(stack1, "Login succesfull");
+                    System.out.println(Thread.currentThread());
+                    logout.setDisable(true);
+                    if (!checkbox.isSelected()) {
+                        SplashController.loginStage.close();
+                    }
+                    Parent root = FXMLLoader.load(getClass().getResource("design/mainscreen.fxml"));
+                    primaryStage.setTitle("DownEase");
+                    //primaryStage.initStyle(StageStyle.UNDECORATED);
+                    primaryStage.setScene(new Scene(root));
+                    primaryStage.show();
+
+                } else {
+                    System.out.println("Login failed");
+                    failedSignUp(stack1, "Login failed");
                 }
-                Parent root = FXMLLoader.load(getClass().getResource("design/mainscreen.fxml"));
-                System.out.println("yoyoyooyo");
-                primaryStage.setTitle("DownEase");
-                //primaryStage.initStyle(StageStyle.UNDECORATED);
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
+            } else {
+                System.out.println("Mandatory fill");
             }
-            else{
-                System.out.println("Login failed");
-                failedSignUp(stack1,"Login failed");
-            }
-        }
-        else{
-            System.out.println("Mandatory fill");
+        }catch (Exception ex)
+        {
+            System.out.println("Ex: "+ex);
         }
     }
 
@@ -201,7 +204,7 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-    public void successSignUp(StackPane stackPane,String str)
+    public void successSignUp(StackPane stackPane,String str) throws InterruptedException
     {
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
@@ -226,6 +229,10 @@ public class Controller implements Initializable{
         });
         content.setActions(button);
         dialog.show();
+        Thread.sleep(1000);
+        isdialogopen=true;
+        System.out.println(Thread.currentThread());
+        //Thread.sleep(2000);
         System.out.println("Correct");
     }
     public void failedSignUp(StackPane stackPane,String str)

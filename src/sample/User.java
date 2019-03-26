@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
-    private String user;
-    private String pass;
-    private String name;
-    private String emailid;
-    private String phno;
-    private String loc;
-    private String occ;
+    protected String user;
+    protected String pass;
+    protected String name;
+    protected String emailid;
+    protected String phno;
+    protected String loc;
+    protected String occ;
 
     public User(String name, String emailid, String phno, String loc, String occ) {
         this.name = name;
