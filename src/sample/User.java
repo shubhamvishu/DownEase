@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
+    public static User currUser;
     protected String user;
     protected String pass;
     protected String name;
@@ -27,6 +28,10 @@ public class User {
         this.user=user;
         this.pass=pass;
     }
+    public String getName()
+    {
+        return this.name;
+    }
 
     public void setUser(String user) {
         this.user = user;
@@ -46,6 +51,16 @@ public class User {
             boolean b=false;
             while(res.next())
             {   b=true;
+                System.out.println("User found");
+                this.name=res.getString("name");
+                System.out.println("User found");
+                this.emailid=res.getString("email");
+                System.out.println("User found");
+                this.emailid=res.getString("phno");
+                System.out.println("User found");
+                this.emailid=res.getString("loc");
+                System.out.println("User found");
+                this.emailid=res.getString("occ");
                 System.out.println("User found");
                 return true;
               //  System.out.println("USER "+res.getString("username")+" "+" PASS : "+res.getString("password"));

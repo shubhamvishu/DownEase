@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="223.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="525.0" prefWidth="223.0" style="-fx-background-color: #17202A;">
@@ -21,23 +22,23 @@
             </AnchorPane>
             <VBox layoutY="203.0" prefHeight="322.0" prefWidth="223.0">
                <children>
-                  <JFXButton accessibleText="home" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Image Download" textFill="WHITE">
+                  <JFXButton accessibleText="Image" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Image Download" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></JFXButton>
-                  <JFXButton accessibleText="about" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Doc Generator" textFill="WHITE">
+                  <JFXButton accessibleText="Document" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Doc Generator" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></JFXButton>
-                  <JFXButton accessibleText="product" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Github Finder" textFill="WHITE">
+                  <JFXButton accessibleText="Github" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Github Finder" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></JFXButton>
-                  <JFXButton accessibleText="contact" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Profile" textFill="WHITE">
+                  <JFXButton accessibleText="Profile" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Profile" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></JFXButton>
-                  <JFXButton accessibleText="logout" layoutX="10.0" layoutY="190.0" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Logout" textFill="WHITE">
+                  <JFXButton accessibleText="Logout" layoutX="10.0" layoutY="190.0" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Logout" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></JFXButton>

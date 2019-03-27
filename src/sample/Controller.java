@@ -116,6 +116,7 @@ public class Controller implements Initializable{
             if (!(user.getText().isEmpty()) && !(pwd.getText().isEmpty())) {   //System.out.println("shubham");
                 User u = new User(user.getText(), pwd.getText());
                 if (u.authenticate()) {
+                    User.currUser=u;
                     System.out.println("Login succesfull");
                     successSignUp(stack1, "Login succesfull");
                     System.out.println(Thread.currentThread());
@@ -145,7 +146,7 @@ public class Controller implements Initializable{
     }
 
     @FXML
-    void newuser(ActionEvent event) {
+    private void newuser(ActionEvent event) {
 
 
         Random rand=new Random();
@@ -163,7 +164,7 @@ public class Controller implements Initializable{
 
     }
     @FXML
-    void checkuser(ActionEvent event) throws FileNotFoundException {
+    private void checkuser(ActionEvent event) throws FileNotFoundException {
         System.out.println("OTP: "+otpverify.getText());
         if(otpverify.getText().equals(otp) && !name.getText().isEmpty() && emailid.getText().equals(tempMail) && !phno.getText().isEmpty() && !loc.getText().isEmpty() && !occ.getText().isEmpty())
         {
@@ -174,7 +175,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public void chooseUserPass()
+    private void chooseUserPass()
     {
         User curr=new User(name.getText(),emailid.getText(),phno.getText(),loc.getText(),occ.getText());
         JFXDialogLayout content=new JFXDialogLayout();
@@ -229,7 +230,7 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-    public void successSignUp(StackPane stackPane,String str) throws InterruptedException
+    private void successSignUp(StackPane stackPane,String str) throws InterruptedException
     {
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
@@ -260,7 +261,7 @@ public class Controller implements Initializable{
         //Thread.sleep(2000);
         System.out.println("Correct");
     }
-    public void failedSignUp(StackPane stackPane,String str)
+    private void failedSignUp(StackPane stackPane,String str)
     {
         System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();
@@ -284,7 +285,7 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-    public void clearSignUp()
+    private void clearSignUp()
     {
         otp="";
         otpverify.clear();
@@ -300,7 +301,6 @@ public class Controller implements Initializable{
         if(!isNetAvailable())
         {
             JFXSnackbar snack=new JFXSnackbar(root);
-            //snack.getStyleClass().add("jfx-snackbar-content");
             snack.show("No internet Connectiom",4000);
         }
         user.setText("");

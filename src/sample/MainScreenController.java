@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
 
-    User current;
+    public static User current;
     @FXML
     private StackPane stack1;
     @FXML
@@ -104,15 +104,11 @@ public class MainScreenController implements Initializable {
                 burger1.setRate(burger1.getRate()*-1);
                 burger1.play();
                 if(drawer.isOpened()){
-                    //drawer.setVisible(false);
                     drawer.close();
-
-
                 }
                 else {
                     drawer.open();
                 }
-                System.out.println("yoyo");
 
             });
 
@@ -132,18 +128,17 @@ public class MainScreenController implements Initializable {
                                 System.out.println("shubh2" + butt.getAccessibleText());
                                 butt.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
                                     switch (butt.getAccessibleText()) {
-                                        case "home":
-                                            System.out.println("shubham c");
+                                        case "Image":
+                                            System.out.println("IMG");
                                             //side1.toFront();
                                             imgTab.setVisible(true);
-                                            System.out.println("shubham");
                                             docTab.setVisible(false);
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
                                             break;
-                                        case "about":
-                                            System.out.println("shubh123");
+                                        case "Document":
+                                            System.out.println("DOC");
                                             //side2.toFront();
                                             docTab.setVisible(true);
                                             imgTab.setVisible(false);
@@ -165,7 +160,7 @@ public class MainScreenController implements Initializable {
 
     }
     @FXML
-    public void addnew1(ActionEvent event)
+    private void addnew1(ActionEvent event)
     {
         AnchorPane an=new AnchorPane();
         HBox hb=new HBox();
@@ -189,7 +184,7 @@ public class MainScreenController implements Initializable {
         imgList.getItems().add(an);
     }
     @FXML
-    public void addnew2(ActionEvent event)
+    private void addnew2(ActionEvent event)
     {
         System.out.println("here");
         AnchorPane an=new AnchorPane();
@@ -232,7 +227,7 @@ public class MainScreenController implements Initializable {
         }
     }
     @FXML
-    public void downloadImg(ActionEvent event)
+    private void downloadImg(ActionEvent event)
     {
         File newdir=null;
         long en=0,s=0;
@@ -284,7 +279,7 @@ public class MainScreenController implements Initializable {
             successdialog();
             en=System.currentTimeMillis();
             System.out.println("II :"+en);
-            System.out.println("RESULT :"+(en-s));
+            System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
         } catch (MalformedURLException e) {
             System.out.println(e+"1st");
             // e.printStackTrace();
@@ -303,7 +298,7 @@ public class MainScreenController implements Initializable {
         System.out.println("RESULT 2 :"+(System.currentTimeMillis()-s));
     }
 
-    public void addToImglist(String link,String path,String search,int count)
+    private void addToImglist(String link,String path,String search,int count)
     {
         System.out.println("ADD"+link+" "+" "+count);
 
@@ -364,7 +359,7 @@ public class MainScreenController implements Initializable {
         imgList.depthProperty().set(1);
         System.out.println("ADDED");
     }
-    public void successdialog()
+    private void successdialog()
     {
         JFXDialogLayout content = new JFXDialogLayout();
         HBox hb=new HBox();
@@ -390,7 +385,7 @@ public class MainScreenController implements Initializable {
         content.setActions(button);
         dialog.show();
     }
-    public void failedSignUp(StackPane stackPane,String str)
+    private void failedSignUp(StackPane stackPane,String str)
     {
         System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();
