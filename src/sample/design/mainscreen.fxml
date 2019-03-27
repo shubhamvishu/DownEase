@@ -28,7 +28,7 @@
       </ImageView>
       <StackPane layoutY="84.0">
          <children>
-            <JFXTabPane fx:id="docApp" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <JFXTabPane fx:id="docTab" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Doc generator">
                      <content>
@@ -54,7 +54,7 @@
                   </Tab>
                </tabs>
             </JFXTabPane>
-            <JFXTabPane fx:id="imgApp" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <JFXTabPane fx:id="imgTab" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Image Download">
                      <content>
@@ -68,7 +68,7 @@
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <AnchorPane prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
+                                                      <AnchorPane fx:id="imgApp" prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                          <children>
                                                             <JFXListView fx:id="imgList" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #111;" />
                                                             <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="86.0" onAction="#downloadImg" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
@@ -81,6 +81,11 @@
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font>
                                                             </TextField>
+                                                            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="657.0" layoutY="29.0" onMouseClicked="#chooseDirectory" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../img/folder.png" />
+                                                               </image>
+                                                            </ImageView>
                                                          </children>
                                                       </AnchorPane>
                                                    </children>

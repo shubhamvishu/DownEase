@@ -29,6 +29,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
@@ -37,13 +39,13 @@ public class MainScreenController implements Initializable {
     @FXML
     private StackPane stack1;
     @FXML
-    private AnchorPane a1;
+    private AnchorPane imgApp;
 
     @FXML
-    private JFXTabPane imgApp;
+    private JFXTabPane imgTab;
 
     @FXML
-    private JFXTabPane docApp;
+    private JFXTabPane docTab;
 
     @FXML
     private JFXHamburger ham;
@@ -57,12 +59,41 @@ public class MainScreenController implements Initializable {
     @FXML
     private JFXListView<AnchorPane>docList;
 
-
     @FXML
     private TextField searchImg;
 
+    private DirectoryChooser dc;
+    private File dirPath=null;
+
+    private boolean isNetAvailable()
+    {
+        try{
+            final URL url = new URL("http://www.google.com");
+            final URLConnection conn = url.openConnection();
+            conn.connect();
+            //conn.getInputStream().close();
+            return true;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            //e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if(!isNetAvailable())
+        {
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",4000);
+        }
+
         try {
 
             HamburgerBackArrowBasicTransition burger1=new HamburgerBackArrowBasicTransition(ham);
@@ -104,9 +135,9 @@ public class MainScreenController implements Initializable {
                                         case "home":
                                             System.out.println("shubham c");
                                             //side1.toFront();
-                                            imgApp.setVisible(true);
+                                            imgTab.setVisible(true);
                                             System.out.println("shubham");
-                                            docApp.setVisible(false);
+                                            docTab.setVisible(false);
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
@@ -114,8 +145,8 @@ public class MainScreenController implements Initializable {
                                         case "about":
                                             System.out.println("shubh123");
                                             //side2.toFront();
-                                            docApp.setVisible(true);
-                                            imgApp.setVisible(false);
+                                            docTab.setVisible(true);
+                                            imgTab.setVisible(false);
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
@@ -183,24 +214,44 @@ public class MainScreenController implements Initializable {
         docList.getItems().add(an);
     }
     @FXML
+    private void temp()
+    {
+        System.out.println("temp");
+    }
+    @FXML
+    private void chooseDirectory()
+    {
+        try {
+            dc = new DirectoryChooser();
+            //dc.setInitialDirectory(new File("/home/shubham"));
+            System.out.println("valid dir");
+            dirPath = dc.showDialog(Controller.primaryStage);
+            System.out.println("valid dir");
+        }catch (Exception e)
+        {   System.out.println(e);
+        }
+    }
+    @FXML
     public void downloadImg(ActionEvent event)
     {
         File newdir=null;
-
+        long en=0,s=0;
         try {
-            DirectoryChooser dc = new DirectoryChooser();
-            newdir = dc.showDialog(Controller.primaryStage);
+
+            newdir = dirPath;
             imgList.getItems().clear();
-            //System.out.println(newdir.getAbsolutePath());
+            System.out.println(newdir.getAbsolutePath());
             if (newdir.getAbsolutePath() == null || searchImg.getText().isEmpty()) {
+                failedSignUp(stack1,"Nothing to search");
                 System.out.println("NULL");return;
             }
         }catch (Exception e)
         {
+            failedSignUp(stack1,"No directory choosen");
             System.out.println(e);
             return;
         }
-        long en=0,s=0;
+
         try {
 
             //System.out.println("home/Pics"+"/"+str+"/img");
@@ -237,8 +288,13 @@ public class MainScreenController implements Initializable {
         } catch (MalformedURLException e) {
             System.out.println(e+"1st");
             // e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println(e+"2nd");
+        } catch(UnknownHostException ex)
+        {   System.out.println("snackbar");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
+        }
+        catch (IOException e) {
+            System.out.println(e+"2nd Ex");
         }
         catch (Exception ex)
         {
@@ -306,6 +362,7 @@ public class MainScreenController implements Initializable {
         imgList.getItems().add(an);
         imgList.setExpanded(true);
         imgList.depthProperty().set(1);
+        System.out.println("ADDED");
     }
     public void successdialog()
     {
@@ -324,6 +381,30 @@ public class MainScreenController implements Initializable {
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#303030;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+        content.setActions(button);
+        dialog.show();
+    }
+    public void failedSignUp(StackPane stackPane,String str)
+    {
+        System.out.println("Failed");
+        JFXDialogLayout content=new JFXDialogLayout();
+        HBox hb=new HBox();
+        Label lb=new Label(str);
+        lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
+        lb.setMinWidth(200);
+        hb.getChildren().addAll(lb);
+        content.setStyle("-fx-background-color:#ddd;-fx-pref-width:250px;-fx-pref-height:50px;-fx-text-fill:#000;-fx-text-color:#000;");
+        content.setBody(hb);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.LEFT);
+        dialog.setContent(content);
+        JFXButton button = new JFXButton("Okay");
+        button.setStyle("-fx-background-color:#1ABC9C;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

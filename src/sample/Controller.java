@@ -23,7 +23,10 @@ import javafx.stage.StageStyle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -86,6 +89,26 @@ public class Controller implements Initializable{
     private String tempMail;
     private boolean isdialogopen=false;
 
+    private boolean isNetAvailable()
+    {
+        try{
+            final URL url = new URL("http://www.google.com");
+            final URLConnection conn = url.openConnection();
+            conn.connect();
+            //conn.getInputStream().close();
+            return true;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            //e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @FXML
     private void login(ActionEvent event) throws IOException ,InterruptedException{
 
@@ -103,7 +126,9 @@ public class Controller implements Initializable{
                     Parent root = FXMLLoader.load(getClass().getResource("design/mainscreen.fxml"));
                     primaryStage.setTitle("DownEase");
                     //primaryStage.initStyle(StageStyle.UNDECORATED);
-                    primaryStage.setScene(new Scene(root));
+                    Scene scene=new Scene(root);
+                    scene.getStylesheets().add(Controller.class.getResource("snack.css").toExternalForm());
+                    primaryStage.setScene(scene);
                     primaryStage.show();
 
                 } else {
@@ -271,6 +296,13 @@ public class Controller implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        if(!isNetAvailable())
+        {
+            JFXSnackbar snack=new JFXSnackbar(root);
+            //snack.getStyleClass().add("jfx-snackbar-content");
+            snack.show("No internet Connectiom",4000);
+        }
         user.setText("");
         pwd.setText("");
         logout.setDisable(true);

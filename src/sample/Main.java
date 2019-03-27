@@ -15,7 +15,9 @@ public class Main extends Application {
         System.out.println("yoyoyooyo");
         primaryStage.setTitle("DownEase");
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root));
+        Scene scene=new Scene(root);
+        scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

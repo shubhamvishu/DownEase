@@ -39,7 +39,8 @@ public class SplashController implements Initializable {
 
                             Parent root = FXMLLoader.load(getClass().getResource("design/login.fxml"));
                             Scene scene=new Scene(root);
-                            loginStage.setTitle("Hello World");
+                            scene.getStylesheets().add(SplashController.class.getResource("snack.css").toExternalForm());
+                            loginStage.setTitle("DownEase");
                             loginStage.resizableProperty().setValue(false);
                             loginStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
                             loginStage.setScene(scene);

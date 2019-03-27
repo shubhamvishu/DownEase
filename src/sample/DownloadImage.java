@@ -49,15 +49,15 @@ public class DownloadImage extends User implements Runnable{
                 }
                 in.close();
                 out.close();
-                //System.out.println("start"+count);
+                //System.out.println("end"+count);
                 //count++;
             } catch (MalformedURLException ex) {
-                System.out.println(ex+"1st");
+                System.out.println(ex+" Wrong URL");
                 // e.printStackTrace();
             } catch (IOException ex) {
-                System.out.println(ex+"2nd");
+                System.out.println(ex+" IOException");
             } catch (Exception ex) {
-                System.out.println(ex+" D 3rd ex");
+                System.out.println(ex);
             }
         }
 
