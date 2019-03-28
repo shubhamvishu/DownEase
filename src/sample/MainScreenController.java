@@ -62,8 +62,18 @@ public class MainScreenController implements Initializable {
     @FXML
     private TextField searchImg;
 
+    @FXML
+    private Label pathLabel;
+
+    @FXML
+    private Label downloadTime;
+
+    @FXML
+    private JFXTextArea logArea;
+
     private DirectoryChooser dc;
     private File dirPath=null;
+    private StringBuilder sb=new StringBuilder("");
 
     private boolean isNetAvailable()
     {
@@ -105,8 +115,10 @@ public class MainScreenController implements Initializable {
                 burger1.play();
                 if(drawer.isOpened()){
                     drawer.close();
+                    drawer.toBack();
                 }
                 else {
+                    drawer.toFront();
                     drawer.open();
                 }
 
@@ -136,6 +148,7 @@ public class MainScreenController implements Initializable {
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
+                                            drawer.toBack();
                                             break;
                                         case "Document":
                                             System.out.println("DOC");
@@ -145,6 +158,7 @@ public class MainScreenController implements Initializable {
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
+                                            drawer.toBack();
                                             break;
                                     }
                                 });
@@ -221,9 +235,11 @@ public class MainScreenController implements Initializable {
             //dc.setInitialDirectory(new File("/home/shubham"));
             System.out.println("valid dir");
             dirPath = dc.showDialog(Controller.primaryStage);
+            pathLabel.setText("  "+dirPath.getAbsolutePath());
             System.out.println("valid dir");
         }catch (Exception e)
-        {   System.out.println(e);
+        {   pathLabel.setText("");
+            System.out.println(e);
         }
     }
     @FXML
@@ -280,13 +296,16 @@ public class MainScreenController implements Initializable {
             en=System.currentTimeMillis();
             System.out.println("II :"+en);
             System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
+            downloadTime.setText("Download Time : "+String.valueOf(System.currentTimeMillis()-s)+" ms");
         } catch (MalformedURLException e) {
             System.out.println(e+"1st");
             // e.printStackTrace();
         } catch(UnknownHostException ex)
         {   System.out.println("snackbar");
+            downloadTime.setText("");
             JFXSnackbar snack=new JFXSnackbar(imgApp);
             snack.show("No internet Connection",6000);
+
         }
         catch (IOException e) {
             System.out.println(e+"2nd Ex");
@@ -295,13 +314,15 @@ public class MainScreenController implements Initializable {
         {
             System.out.println(ex+"3rd exception");
         }
-        System.out.println("RESULT 2 :"+(System.currentTimeMillis()-s));
+
     }
 
     private void addToImglist(String link,String path,String search,int count)
     {
         System.out.println("ADD"+link+" "+" "+count);
-
+        logArea.clear();
+        sb.append("  IMG"+count+" . . . .\n"+"  Sucessfully downloaded"+"\n");
+        logArea.setText(sb.toString());
         AnchorPane an=new AnchorPane();
         imgList.setStyle("-fx-background-color:#000;");
         imgList.setExpanded(true);

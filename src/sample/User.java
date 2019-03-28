@@ -53,15 +53,10 @@ public class User {
             {   b=true;
                 System.out.println("User found");
                 this.name=res.getString("name");
-                System.out.println("User found");
                 this.emailid=res.getString("email");
-                System.out.println("User found");
                 this.emailid=res.getString("phno");
-                System.out.println("User found");
                 this.emailid=res.getString("loc");
-                System.out.println("User found");
                 this.emailid=res.getString("occ");
-                System.out.println("User found");
                 return true;
               //  System.out.println("USER "+res.getString("username")+" "+" PASS : "+res.getString("password"));
                // System.out.println();

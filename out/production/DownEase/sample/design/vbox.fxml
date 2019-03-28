@@ -22,26 +22,61 @@
             </AnchorPane>
             <VBox layoutY="203.0" prefHeight="322.0" prefWidth="223.0">
                <children>
-                  <JFXButton accessibleText="Image" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Image Download" textFill="WHITE">
+                  <JFXButton accessibleText="Image" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="  Image Download" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
-                     </font></JFXButton>
-                  <JFXButton accessibleText="Document" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Doc Generator" textFill="WHITE">
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/photo2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton accessibleText="Document" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="    Doc   Generator" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
-                     </font></JFXButton>
-                  <JFXButton accessibleText="Github" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Github Finder" textFill="WHITE">
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/doc1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton accessibleText="Github" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="   Github  Finder" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
-                     </font></JFXButton>
-                  <JFXButton accessibleText="Profile" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Profile" textFill="WHITE">
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/github.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton accessibleText="Profile" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="      User  Profile" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
-                     </font></JFXButton>
-                  <JFXButton accessibleText="Logout" layoutX="10.0" layoutY="190.0" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="Logout" textFill="WHITE">
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/user3.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton accessibleText="Logout" layoutX="10.0" layoutY="190.0" prefHeight="60.0" prefWidth="223.0" styleClass="menu-btn" stylesheets="@../style.css" text="    Logout" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
-                     </font></JFXButton>
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logout4.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
                </children>
             </VBox>
          </children>

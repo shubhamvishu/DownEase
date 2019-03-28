@@ -12,7 +12,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("design/splash.fxml"));
-        System.out.println("yoyoyooyo");
         primaryStage.setTitle("DownEase");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         Scene scene=new Scene(root);

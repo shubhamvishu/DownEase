@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
@@ -39,7 +41,7 @@
                                     <AnchorPane prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #eee;">
                                        <children>
                                           <JFXListView fx:id="docList" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="628.0" />
-                                          <JFXButton fx:id="add2" layoutX="394.0" layoutY="88.0" onAction="#addnew2" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #888;" text="Add 2">
+                                          <JFXButton fx:id="add2" layoutX="100.0" layoutY="88.0" onAction="#addnew2" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #888;" text="Add 2">
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
@@ -70,11 +72,18 @@
                                                    <children>
                                                       <AnchorPane fx:id="imgApp" prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                          <children>
-                                                            <JFXListView fx:id="imgList" layoutX="250.0" layoutY="157.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #111;" />
-                                                            <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="86.0" onAction="#downloadImg" prefHeight="42.0" prefWidth="112.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
+                                                            <JFXListView fx:id="imgList" layoutX="250.0" layoutY="192.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #222;" />
+                                                            <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="86.0" onAction="#downloadImg" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font>
+                                                               <graphic>
+                                                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../img/download3.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
                                                             </JFXButton>
                                                             <TextField fx:id="searchImg" layoutX="250.0" layoutY="32.0" prefHeight="33.0" prefWidth="387.0" promptText="   Search Image" style="-fx-background-radius: 20px; -fx-background-color: #666; -fx-text-fill: #fff;">
                                                                <font>
@@ -84,6 +93,22 @@
                                                             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="657.0" layoutY="29.0" onMouseClicked="#chooseDirectory" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@../img/folder.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <JFXTextArea fx:id="logArea" layoutX="23.0" layoutY="67.0" prefHeight="428.0" prefWidth="199.0" style="-fx-background-color: #212F3D; -fx-text-fill: #346DDF;" />
+                                                            <Label fx:id="logLabel" alignment="CENTER" layoutX="24.0" layoutY="32.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: #913AD9;" text="Log" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font></Label>
+                                                            <JFXComboBox fx:id="typeCombobox" layoutX="256.0" layoutY="145.0" prefHeight="26.0" prefWidth="146.0" promptText="Type" />
+                                                            <Label fx:id="pathLabel" layoutX="417.0" layoutY="91.0" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #212F3D; -fx-text-fill: #fff;">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font></Label>
+                                                            <Label fx:id="downloadTime" alignment="CENTER_RIGHT" layoutX="444.0" layoutY="161.0" prefHeight="20.0" prefWidth="306.0" textFill="WHITE" />
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="605.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../img/glass3.png" />
                                                                </image>
                                                             </ImageView>
                                                          </children>
