@@ -118,7 +118,7 @@ public class Controller implements Initializable{
                 if (u.authenticate()) {
                     User.currUser=u;
                     System.out.println("Login succesfull");
-                    successSignUp(stack1, "Login succesfull");
+                    successDialog(stack1, "Login succesfull");
                     System.out.println(Thread.currentThread());
                     logout.setDisable(true);
                     if (!checkbox.isSelected()) {
@@ -134,7 +134,7 @@ public class Controller implements Initializable{
 
                 } else {
                     System.out.println("Login failed");
-                    failedSignUp(stack1, "Login failed");
+                    failedDialog(stack1, "Login failed");
                 }
             } else {
                 System.out.println("Mandatory fill");
@@ -152,14 +152,23 @@ public class Controller implements Initializable{
         Random rand=new Random();
         otp=String.valueOf(rand.nextInt(10000));
         System.out.println("otp:"+otp);
-        if(emailid.getText()!=null && emailid.getText().endsWith("@gmail.com")) {
-            SendMail send = new SendMail(emailid.getText(), otp);
-            tempMail=emailid.getText();
-        }
-        else{
-            Alert al=new Alert(Alert.AlertType.ERROR);
-            al.setContentText("Invalid email");
-            al.show();
+        try {
+            if (emailid.getText() != null && emailid.getText().endsWith("@gmail.com")) {
+                SendMail sendMail = new SendMail(emailid.getText(), otp);
+                sendMail.send();
+                tempMail = emailid.getText();
+                JFXSnackbar snack=new JFXSnackbar(root);
+                snack.show("Mail successfullt sent",4000);
+            } else {
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setContentText("Invalid email");
+                al.show();
+            }
+        }catch (Exception ex)
+        {
+            System.out.println("Exception here");
+            emailid.setText("");
+            failedDialog(stack2,"Invalid email");
         }
 
     }
@@ -171,7 +180,7 @@ public class Controller implements Initializable{
             chooseUserPass();
         }
         else{
-            failedSignUp(stack2,"Wrong details");
+            failedDialog(stack2,"Wrong details");
         }
     }
 
@@ -187,7 +196,7 @@ public class Controller implements Initializable{
         JFXPasswordField pwd2=new JFXPasswordField();
         pwd2.setPromptText("Confirm Password");
         vb.getChildren().addAll(username,pwd1,pwd2);
-        vb.setMinWidth(300);
+        vb.setMinWidth(130);
         content.setBody(vb);
         JFXDialog dialog = new JFXDialog(stack2, content, JFXDialog.DialogTransition.LEFT);
         dialog.setContent(content);
@@ -205,20 +214,20 @@ public class Controller implements Initializable{
                         if(curr.authenticate())
                         {
                             System.out.println("Signin failed...already exits");
-                            failedSignUp(stack2,"Record Exists");
+                            failedDialog(stack2,"Record Exists");
 
                         }
                         else{
                             System.out.println();
                             curr.addNewUser();
                             dialog.close();
-                            successSignUp(stack2,"Signin succesfull");
+                            successDialog(stack2,"Signin succesfull");
                             clearSignUp();
                         }
 
                     }
                     else{
-                        failedSignUp(stack2,"Wrong username/password");
+                        failedDialog(stack2,"Wrong username/password");
                         System.out.println("Not Macthing");
                     }
                     // Thread.sleep(2000);
@@ -230,7 +239,7 @@ public class Controller implements Initializable{
         content.setActions(button);
         dialog.show();
     }
-    private void successSignUp(StackPane stackPane,String str) throws InterruptedException
+    private void successDialog(StackPane stackPane,String str) throws InterruptedException
     {
         JFXDialogLayout content=new JFXDialogLayout();
         HBox hb=new HBox();
@@ -261,7 +270,7 @@ public class Controller implements Initializable{
         //Thread.sleep(2000);
         System.out.println("Correct");
     }
-    private void failedSignUp(StackPane stackPane,String str)
+    private void failedDialog(StackPane stackPane,String str)
     {
         System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();

@@ -20,10 +20,8 @@ public class SendMail {
     public SendMail(String t,String str) {
         to = t;
         msg=str;
-        send();
     }
-    void send()
-    {
+    public void send() throws Exception {
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
@@ -64,7 +62,11 @@ public class SendMail {
             Transport.send(message);
             System.out.println("Mail successfully sent");
         } catch (MessagingException mex) {
-            mex.printStackTrace();
+            throw new Exception();
+            //mex.printStackTrace();
+        }
+        catch (Exception ex) {
+            throw new Exception();
         }
     }
 

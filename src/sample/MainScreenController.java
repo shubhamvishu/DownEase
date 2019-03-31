@@ -2,6 +2,7 @@ package sample;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,10 +28,7 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
@@ -71,6 +69,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private JFXTextArea logArea;
 
+    @FXML
+    private JFXComboBox imgTypeCombobox;
+
     private DirectoryChooser dc;
     private File dirPath=null;
     private StringBuilder sb=new StringBuilder("");
@@ -106,6 +107,8 @@ public class MainScreenController implements Initializable {
 
         try {
 
+            imgTypeCombobox.setItems(FXCollections.observableArrayList("Image","Icon"));
+            imgTypeCombobox.setValue("Image");
             HamburgerBackArrowBasicTransition burger1=new HamburgerBackArrowBasicTransition(ham);
             drawer.open();
             burger1.setRate(1);
@@ -115,7 +118,6 @@ public class MainScreenController implements Initializable {
                 burger1.play();
                 if(drawer.isOpened()){
                     drawer.close();
-                    drawer.toBack();
                 }
                 else {
                     drawer.toFront();
@@ -148,7 +150,6 @@ public class MainScreenController implements Initializable {
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
-                                            drawer.toBack();
                                             break;
                                         case "Document":
                                             System.out.println("DOC");
@@ -158,7 +159,6 @@ public class MainScreenController implements Initializable {
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
-                                            drawer.toBack();
                                             break;
                                     }
                                 });
@@ -242,6 +242,22 @@ public class MainScreenController implements Initializable {
             System.out.println(e);
         }
     }
+
+    @FXML
+    public void downloadFile(ActionEvent event)
+    {
+        if(imgTypeCombobox.getValue().equals("Image"))
+        {
+            System.out.println("Choosed image");
+            downloadImg(event);
+        }
+        else if(imgTypeCombobox.getValue().equals("Icon"))
+        {
+            System.out.println("Choosed icon");
+            downloadIcon(event);
+        }
+    }
+
     @FXML
     private void downloadImg(ActionEvent event)
     {
@@ -251,14 +267,15 @@ public class MainScreenController implements Initializable {
 
             newdir = dirPath;
             imgList.getItems().clear();
+            downloadTime.setText("");
             System.out.println(newdir.getAbsolutePath());
             if (newdir.getAbsolutePath() == null || searchImg.getText().isEmpty()) {
-                failedSignUp(stack1,"Nothing to search");
+                failedDialog(stack1,"Nothing to search");
                 System.out.println("NULL");return;
             }
         }catch (Exception e)
         {
-            failedSignUp(stack1,"No directory choosen");
+            failedDialog(stack1,"No directory choosen");
             System.out.println(e);
             return;
         }
@@ -275,6 +292,12 @@ public class MainScreenController implements Initializable {
             Document document = Jsoup.connect(u).get();
             Elements link = document.select("img");
             System.out.println("size:"+link.size());
+            if(link.size()<=10)
+            {
+                failedDialog(stack1,"No such images found");
+                fl.delete();
+                return;
+            }
             int count=0;
             s=System.currentTimeMillis();
             System.out.println("I :"+s);
@@ -282,9 +305,9 @@ public class MainScreenController implements Initializable {
                 count++;
                 //System.out.print(count++ +" ");
                 //System.out.println(e.attr("data-src"));
-                DownloadImage di=new DownloadImage(current,e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count);
+                DownloadImage di=new DownloadImage(current,e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,".jpg");
                 if(!e.attr("data-src").isEmpty())
-                    addToImglist(e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count);
+                    addToImglist(e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,"#000");
                 Thread t=new Thread(di);
                 t.start();
 
@@ -292,7 +315,7 @@ public class MainScreenController implements Initializable {
 
             }
             Thread.sleep(1000);
-            successdialog();
+            successDialog();
             en=System.currentTimeMillis();
             System.out.println("II :"+en);
             System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
@@ -307,6 +330,13 @@ public class MainScreenController implements Initializable {
             snack.show("No internet Connection",6000);
 
         }
+        catch (ConnectException ex)
+        {
+            System.out.println("snackbar");
+            downloadTime.setText("");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
+        }
         catch (IOException e) {
             System.out.println(e+"2nd Ex");
         }
@@ -316,8 +346,97 @@ public class MainScreenController implements Initializable {
         }
 
     }
+    private void downloadIcon(ActionEvent event)
+    {
+        File newdir=null;
+        long en=0,s=0;
+        try {
 
-    private void addToImglist(String link,String path,String search,int count)
+            newdir = dirPath;
+            imgList.getItems().clear();
+            downloadTime.setText("");
+            System.out.println(newdir.getAbsolutePath());
+            if (newdir.getAbsolutePath() == null || searchImg.getText().isEmpty()) {
+                failedDialog(stack1,"Nothing to search");
+                System.out.println("NULL");return;
+            }
+        }catch (Exception e)
+        {
+            failedDialog(stack1,"No directory choosen");
+            System.out.println(e);
+            return;
+        }
+
+        try {
+
+            //System.out.println("home/Pics"+"/"+str+"/img");
+            // File abcd=new File("yo.txt");abc
+
+            //boolean c=abcd.mkdir();
+            File fl=new File(newdir.getAbsolutePath()+"/"+searchImg.getText()+"-icon");
+            boolean created=fl.mkdir();
+            String u = "https://www.flaticon.com/search?word="+searchImg.getText();
+            Document document = Jsoup.connect(u).get();
+            Elements link = document.getElementsByClass("icon--holder");
+            System.out.println(link);
+            System.out.println("size:"+link.size());
+            if(link.size()<=0)
+            {
+                failedDialog(stack1,"No such icons found");
+                fl.delete();
+                return;
+            }
+            int count=0;
+            s=System.currentTimeMillis();
+            System.out.println("I :"+s);
+            for(Element e:link) {
+                count++;
+                Elements imglink=e.getElementsByTag("img");
+                System.out.println("icons size:"+imglink.size());
+                //System.out.print(count++ +" ");
+                //System.out.println(e.attr("data-src"));
+                for(Element ele:imglink)
+                {
+                    DownloadImage di=new DownloadImage(current,ele.attr("src"),newdir.getAbsolutePath(),searchImg.getText()+"-icon",count,".png");
+                    if(!ele.attr("src").isEmpty())
+                        addToImglist(ele.attr("src"),newdir.getAbsolutePath(),searchImg.getText(),count,"#fff");
+                    Thread t=new Thread(di);
+                    t.start();
+                }
+
+                //System.out.println("end"+count);
+
+            }
+            Thread.sleep(1000);
+            successDialog();
+            en=System.currentTimeMillis();
+            System.out.println("II :"+en);
+            System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
+            downloadTime.setText("Download Time : "+String.valueOf(System.currentTimeMillis()-s)+" ms");
+        } catch (MalformedURLException e) {
+            System.out.println(e+"1st");
+            // e.printStackTrace();
+        } catch(UnknownHostException ex)
+        {   System.out.println("snackbar");
+            downloadTime.setText("");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
+
+        }
+        catch (ConnectException ex)
+        {
+            System.out.println("snackbar");
+            downloadTime.setText("");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex+"3rd exception");
+        }
+
+    }
+    private void addToImglist(String link,String path,String search,int count,String bgcolor )
     {
         System.out.println("ADD"+link+" "+" "+count);
         logArea.clear();
@@ -360,7 +479,7 @@ public class MainScreenController implements Initializable {
             //content.setHeading(new Label("Your Image"));
             content.setBody(ver);
             JFXDialog dialog = new JFXDialog(stack1, content, JFXDialog.DialogTransition.RIGHT);
-            content.setStyle("-fx-background-color:#222;-fx-pref-width:200px;-fx-pref-height:200px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
+            content.setStyle("-fx-background-color:"+bgcolor+";-fx-pref-width:200px;-fx-pref-height:200px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
             dialog.setContent(content);
             JFXButton button = new JFXButton("Okay");
             button.setStyle("-fx-background-color:#303030;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -380,7 +499,7 @@ public class MainScreenController implements Initializable {
         imgList.depthProperty().set(1);
         System.out.println("ADDED");
     }
-    private void successdialog()
+    private void successDialog()
     {
         JFXDialogLayout content = new JFXDialogLayout();
         HBox hb=new HBox();
@@ -406,7 +525,7 @@ public class MainScreenController implements Initializable {
         content.setActions(button);
         dialog.show();
     }
-    private void failedSignUp(StackPane stackPane,String str)
+    private void failedDialog(StackPane stackPane,String str)
     {
         System.out.println("Failed");
         JFXDialogLayout content=new JFXDialogLayout();

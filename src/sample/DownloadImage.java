@@ -10,6 +10,7 @@ public class DownloadImage extends User implements Runnable{
     private String url="";
     private String path="";
     private String search="";
+    private String ext="";
     private int count;
 
     public void setUrl(String url) {
@@ -28,12 +29,13 @@ public class DownloadImage extends User implements Runnable{
         this.count = count;
     }
 
-    public DownloadImage(User user, String url, String path, String search, int count) {
+    public DownloadImage(User user, String url, String path, String search, int count,String ext) {
         super(user.name, user.emailid, user.phno, user.loc, user.occ);
         this.url=url;
         this.path=path;
         this.search=search;
         this.count=count;
+        this.ext=ext;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class DownloadImage extends User implements Runnable{
                 //System.out.println(url);
                 URL link = new URL(url);
                 InputStream in = new BufferedInputStream(link.openStream());
-                OutputStream out = new BufferedOutputStream(new FileOutputStream(path+"/"+search+"/img" + String.valueOf(count)+".jpg"));
+                OutputStream out = new BufferedOutputStream(new FileOutputStream(path+"/"+search+"/img" + String.valueOf(count)+ext));
                 for (int i; (i = in.read()) != -1; ) {
                     out.write(i);
                 }
