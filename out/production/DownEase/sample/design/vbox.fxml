@@ -29,7 +29,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/photo2.png" />
+                              <Image url="@../img/photo.png" />
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
@@ -40,7 +40,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/doc1.png" />
+                              <Image url="@../img/doc.png" />
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
@@ -51,7 +51,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/github.png" />
+                              <Image url="@../img/github-logo.png" />
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
@@ -62,7 +62,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/user3.png" />
+                              <Image url="@../img/user.png" />
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
@@ -73,7 +73,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/logout4.png" />
+                              <Image url="@../img/logout.png" />
                            </image>
                         </ImageView>
                      </graphic></JFXButton>

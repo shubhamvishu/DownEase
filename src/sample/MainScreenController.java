@@ -185,7 +185,6 @@ public class MainScreenController implements Initializable {
         hb.getChildren().add(lb);
         JFXButton btn1=new JFXButton("Submit");
         btn1.addEventHandler(MouseEvent.MOUSE_CLICKED,(e)->{
-            System.out.println("yoyo");
             Alert al=new Alert(Alert.AlertType.CONFIRMATION);
             al.setContentText("its me here dude");
             al.show();
@@ -210,7 +209,6 @@ public class MainScreenController implements Initializable {
         hb.getChildren().add(lb);
         JFXButton btn1=new JFXButton("Submit");
         btn1.addEventHandler(MouseEvent.MOUSE_CLICKED,(e)->{
-            System.out.println("yoyo");
             Alert al=new Alert(Alert.AlertType.CONFIRMATION);
             al.setContentText("its me here dude");
             al.show();
@@ -307,7 +305,7 @@ public class MainScreenController implements Initializable {
                 //System.out.println(e.attr("data-src"));
                 DownloadImage di=new DownloadImage(current,e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,".jpg");
                 if(!e.attr("data-src").isEmpty())
-                    addToImglist(e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,"#000");
+                    addToImglist(e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,"#111");
                 Thread t=new Thread(di);
                 t.start();
 
@@ -342,6 +340,9 @@ public class MainScreenController implements Initializable {
         }
         catch (Exception ex)
         {
+            downloadTime.setText("");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
             System.out.println(ex+"3rd exception");
         }
 
@@ -432,6 +433,9 @@ public class MainScreenController implements Initializable {
         }
         catch (Exception ex)
         {
+            downloadTime.setText("");
+            JFXSnackbar snack=new JFXSnackbar(imgApp);
+            snack.show("No internet Connection",6000);
             System.out.println(ex+"3rd exception");
         }
 
@@ -468,7 +472,7 @@ public class MainScreenController implements Initializable {
         JFXButton btn2=new JFXButton(" Open ");
         btn2.setStyle("-fx-width:100px;-fx-background-color:#04B486;-fx-text-fill:#fff;-fx-margin:200px;-fx-font-weight:bold;");
         btn2.addEventHandler(MouseEvent.MOUSE_CLICKED,(e)->{
-            System.out.println("yoyo");
+
             JFXDialogLayout content = new JFXDialogLayout();
             VBox ver=new VBox();
             ImageView img=new ImageView(new Image(link));

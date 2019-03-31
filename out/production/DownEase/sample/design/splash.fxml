@@ -15,16 +15,12 @@
             <Image url="@../img/color4.png" />
          </image>
       </ImageView>
-      <Label prefHeight="117.0" prefWidth="432.0" style="-fx-text-fill: #eee;" styleClass="splashlabel" stylesheets="@../style.css" text="DownEase">
-         <StackPane.margin>
-            <Insets left="70.0" top="-150.0" />
-         </StackPane.margin></Label>
-      <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="115.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/space.png" />
          </image>
          <StackPane.margin>
-            <Insets bottom="200.0" left="-520.0" />
+            <Insets bottom="200.0" left="-510.0" />
          </StackPane.margin>
       </ImageView>
       <JFXProgressBar prefHeight="1.0" prefWidth="554.0">
@@ -39,5 +35,9 @@
             <Insets left="-280.0" top="-50.0" />
          </StackPane.margin>
       </Label>
+      <Label prefHeight="117.0" prefWidth="432.0" style="-fx-text-fill: #eee;" styleClass="splashlabel" stylesheets="@../style.css" text="DownEase">
+         <StackPane.margin>
+            <Insets left="70.0" top="-150.0" />
+         </StackPane.margin></Label>
    </children>
 </StackPane>

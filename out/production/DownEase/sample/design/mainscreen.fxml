@@ -72,8 +72,8 @@
                                                    <children>
                                                       <AnchorPane fx:id="imgApp" prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                          <children>
-                                                            <JFXListView fx:id="imgList" layoutX="250.0" layoutY="192.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #222;" />
-                                                            <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="86.0" onAction="#downloadFile" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
+                                                            <JFXListView fx:id="imgList" layoutX="250.0" layoutY="147.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #222;" />
+                                                            <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="82.0" onAction="#downloadFile" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font>
@@ -95,20 +95,28 @@
                                                                   <Image url="@../img/folder.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <JFXTextArea fx:id="logArea" layoutX="23.0" layoutY="67.0" prefHeight="428.0" prefWidth="199.0" style="-fx-background-color: #212F3D; -fx-text-fill: #346DDF;" />
-                                                            <Label fx:id="logLabel" alignment="CENTER" layoutX="24.0" layoutY="32.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: #913AD9;" text="Log" textFill="WHITE">
+                                                            <JFXTextArea fx:id="logArea" layoutX="23.0" layoutY="225.0" prefHeight="270.0" prefWidth="199.0" style="-fx-background-color: #031C33; -fx-text-fill: #5D6D7E;" />
+                                                            <Label fx:id="logLabel" alignment="CENTER" layoutX="24.0" layoutY="192.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: #3600ff;" text="Log" textFill="WHITE">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font></Label>
-                                                            <JFXComboBox fx:id="imgTypeCombobox" layoutX="250.0" layoutY="148.0" prefHeight="26.0" prefWidth="146.0" promptText="  Type" style="-fx-background-color: #ddd; -fx-font-weight: bold;" />
-                                                            <Label fx:id="pathLabel" layoutX="417.0" layoutY="91.0" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #212F3D; -fx-text-fill: #fff;">
+                                                            <JFXComboBox fx:id="imgTypeCombobox" layoutX="251.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0" promptText="  Type" style="-fx-background-color: #ddd; -fx-font-weight: bold;" />
+                                                            <Label fx:id="pathLabel" layoutX="416.0" layoutY="87.0" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #212F3D; -fx-text-fill: #fff;">
                                                                <font>
                                                                   <Font name="System Bold" size="13.0" />
                                                                </font></Label>
-                                                            <Label fx:id="downloadTime" alignment="CENTER_RIGHT" layoutX="444.0" layoutY="161.0" prefHeight="20.0" prefWidth="306.0" textFill="WHITE" />
+                                                            <Label fx:id="downloadTime" alignment="CENTER_RIGHT" layoutX="484.0" layoutY="472.0" prefHeight="20.0" prefWidth="306.0" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font></Label>
                                                             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="605.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
-                                                                  <Image url="@../img/glass3.png" />
+                                                                  <Image url="@../img/search.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="60.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../img/photo.png" />
                                                                </image>
                                                             </ImageView>
                                                          </children>
@@ -130,6 +138,6 @@
          </children>
       </StackPane>
         <JFXDrawer fx:id="drawer" defaultDrawerSize="223.0" layoutY="117.0" prefHeight="492.0" prefWidth="191.0" />
-      <JFXHamburger fx:id="ham" layoutX="800.0" layoutY="150.0" style="-fx-background-color: #fff;" />
+      <JFXHamburger fx:id="ham" layoutX="800.0" layoutY="150.0" stylesheets="@../style.css" />
     </children>
 </AnchorPane>
