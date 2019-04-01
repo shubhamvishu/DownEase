@@ -3,6 +3,7 @@ package sample;
 import com.jfoenix.controls.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -126,6 +127,7 @@ public class Controller implements Initializable{
                     }
                     Parent root = FXMLLoader.load(getClass().getResource("design/mainscreen.fxml"));
                     primaryStage.setTitle("DownEase");
+                    primaryStage.resizableProperty().setValue(false);
                     //primaryStage.initStyle(StageStyle.UNDECORATED);
                     Scene scene=new Scene(root);
                     scene.getStylesheets().add(Controller.class.getResource("snack.css").toExternalForm());
@@ -183,12 +185,12 @@ public class Controller implements Initializable{
             failedDialog(stack2,"Wrong details");
         }
     }
-
     private void chooseUserPass()
     {
         User curr=new User(name.getText(),emailid.getText(),phno.getText(),loc.getText(),occ.getText());
         JFXDialogLayout content=new JFXDialogLayout();
         VBox vb=new VBox();
+        vb.setPrefWidth(325);
         JFXTextField username=new JFXTextField();
         username.setPromptText("Username");
         JFXPasswordField pwd1=new JFXPasswordField();
@@ -196,9 +198,9 @@ public class Controller implements Initializable{
         JFXPasswordField pwd2=new JFXPasswordField();
         pwd2.setPromptText("Confirm Password");
         vb.getChildren().addAll(username,pwd1,pwd2);
-        vb.setMinWidth(130);
         content.setBody(vb);
         JFXDialog dialog = new JFXDialog(stack2, content, JFXDialog.DialogTransition.LEFT);
+        content.setPrefWidth(325);
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#1ABC9C;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -304,13 +306,23 @@ public class Controller implements Initializable{
         loc.clear();
         occ.clear();
     }
+    private void showNoConnection()
+    {
+        JFXSnackbar snack=new JFXSnackbar(root);
+        EventHandler handler=new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                snack.close();
+            }
+        };
+        snack.show("No internet Connection","Okay",6000,handler);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         if(!isNetAvailable())
         {
-            JFXSnackbar snack=new JFXSnackbar(root);
-            snack.show("No internet Connectiom",4000);
+            showNoConnection();
         }
         user.setText("");
         pwd.setText("");

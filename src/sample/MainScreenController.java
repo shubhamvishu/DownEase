@@ -4,6 +4,7 @@ import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
@@ -72,6 +76,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private JFXComboBox imgTypeCombobox;
 
+    @FXML
+    private Label userNameLabel;
+
     private DirectoryChooser dc;
     private File dirPath=null;
     private StringBuilder sb=new StringBuilder("");
@@ -101,12 +108,12 @@ public class MainScreenController implements Initializable {
 
         if(!isNetAvailable())
         {
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",4000);
+            showNoConnection();
         }
 
         try {
 
+            userNameLabel.setText("  "+User.currUser.getName());
             imgTypeCombobox.setItems(FXCollections.observableArrayList("Image","Icon"));
             imgTypeCombobox.setValue("Image");
             HamburgerBackArrowBasicTransition burger1=new HamburgerBackArrowBasicTransition(ham);
@@ -167,8 +174,10 @@ public class MainScreenController implements Initializable {
                     }
                 }
             }
-
+            welcomeDialog(stack1,"Wecome  "+User.currUser.getName());
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -255,7 +264,6 @@ public class MainScreenController implements Initializable {
             downloadIcon(event);
         }
     }
-
     @FXML
     private void downloadImg(ActionEvent event)
     {
@@ -324,16 +332,14 @@ public class MainScreenController implements Initializable {
         } catch(UnknownHostException ex)
         {   System.out.println("snackbar");
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
 
         }
         catch (ConnectException ex)
         {
             System.out.println("snackbar");
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
         }
         catch (IOException e) {
             System.out.println(e+"2nd Ex");
@@ -341,8 +347,7 @@ public class MainScreenController implements Initializable {
         catch (Exception ex)
         {
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
             System.out.println(ex+"3rd exception");
         }
 
@@ -420,22 +425,19 @@ public class MainScreenController implements Initializable {
         } catch(UnknownHostException ex)
         {   System.out.println("snackbar");
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
 
         }
         catch (ConnectException ex)
         {
             System.out.println("snackbar");
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
         }
         catch (Exception ex)
         {
             downloadTime.setText("");
-            JFXSnackbar snack=new JFXSnackbar(imgApp);
-            snack.show("No internet Connection",6000);
+            showNoConnection();
             System.out.println(ex+"3rd exception");
         }
 
@@ -464,9 +466,10 @@ public class MainScreenController implements Initializable {
         hb.setSpacing(20);
         JFXButton btn1=new JFXButton("Copy URL");
         btn1.addEventHandler(MouseEvent.MOUSE_CLICKED,(e)->{
-            Alert al=new Alert(Alert.AlertType.CONFIRMATION);
-            al.setContentText("URL copied to Clipboard");
-            al.show();
+            Toolkit toolkit=Toolkit.getDefaultToolkit();
+            Clipboard clipboard=toolkit.getSystemClipboard();
+            StringSelection selection=new StringSelection(link);
+            clipboard.setContents(selection, null);
         });
         btn1.setStyle("-fx-width:100px;-fx-background-color:#2E2EFE;-fx-text-fill:#fff;-fx-margin:200px;-fx-font-weight:bold;");
         JFXButton btn2=new JFXButton(" Open ");
@@ -503,6 +506,38 @@ public class MainScreenController implements Initializable {
         imgList.depthProperty().set(1);
         System.out.println("ADDED");
     }
+    private void welcomeDialog(StackPane stackPane,String str) throws InterruptedException
+    {
+        JFXDialogLayout content=new JFXDialogLayout();
+        VBox vb=new VBox();
+        vb.setSpacing(30);
+        Label lb=new Label(str);
+        lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
+        lb.setMinWidth(200);
+        lb.setAlignment(Pos.CENTER);
+        ImageView im=new ImageView(new Image("sample/img/confetti.png"));
+        im.setFitWidth(125);
+        im.setFitHeight(125);
+        vb.getChildren().addAll(im,lb);
+        content.setStyle("-fx-background-color:#fff;-fx-pref-width:150px;-fx-pref-height:200px;-fx-text-fill:#000;-fx-text-color:#000;");
+        content.setBody(vb);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+        dialog.setContent(content);
+        JFXButton button = new JFXButton("Lets Go");
+        button.setStyle("-fx-background-color:#333;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("closing");dialog.close();
+            }
+        });
+        content.setActions(button);
+        dialog.show();
+        Thread.sleep(1000);
+        System.out.println(Thread.currentThread());
+        //Thread.sleep(2000);
+        System.out.println("Welcome dialog");
+    }
     private void successDialog()
     {
         JFXDialogLayout content = new JFXDialogLayout();
@@ -516,7 +551,7 @@ public class MainScreenController implements Initializable {
         hb.getChildren().addAll(label,im);
         content.setBody(hb);
         JFXDialog dialog = new JFXDialog(stack1, content, JFXDialog.DialogTransition.TOP);
-        content.setStyle("-fx-background-color:#8000FF;-fx-pref-width:350px;-fx-pref-height:150px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
+        content.setStyle("-fx-background-color:#8000FF;-fx-pref-width:350px;-fx-pref-height:160px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
         dialog.setContent(content);
         JFXButton button = new JFXButton("Okay");
         button.setStyle("-fx-background-color:#303030;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
@@ -552,5 +587,16 @@ public class MainScreenController implements Initializable {
         });
         content.setActions(button);
         dialog.show();
+    }
+    private void showNoConnection()
+    {
+        JFXSnackbar snack=new JFXSnackbar(imgApp);
+        EventHandler handler=new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                snack.close();
+            }
+        };
+        snack.show("No internet Connection","Okay",6000,handler);
     }
 }
