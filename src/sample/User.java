@@ -15,6 +15,8 @@ public class User {
     protected String loc;
     protected String occ;
 
+    public User(){}
+
     public User(String name, String emailid, String phno, String loc, String occ) {
         this.name = name;
         this.emailid = emailid;
@@ -52,6 +54,7 @@ public class User {
             while(res.next())
             {   b=true;
                 System.out.println("User found");
+                System.out.println(res.getString("id"));
                 this.name=res.getString("name");
                 this.emailid=res.getString("email");
                 this.emailid=res.getString("phno");
@@ -87,5 +90,23 @@ public class User {
             System.out.println("Invalid syntax ,operation failed");
         }
 
+    }
+    protected static int getUserId(String username,String password){
+        try{
+            DbConnect db = new DbConnect();
+            Connection conn = db.getConnection();
+            PreparedStatement pst = conn.prepareStatement("select id from user where username='" + username + "' and password='" + password + "';");
+            ResultSet res=pst.executeQuery();
+            while(res.next())
+            {
+                System.out.println("User found");
+                return Integer.parseInt(res.getString("id"));
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println("No user founf");
+        }
+        return 0;
     }
 }

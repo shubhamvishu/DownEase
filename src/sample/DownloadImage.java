@@ -4,6 +4,11 @@ import sample.User;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class DownloadImage extends User implements Runnable{
 
@@ -27,6 +32,10 @@ public class DownloadImage extends User implements Runnable{
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public DownloadImage(){
+        super();
     }
 
     public DownloadImage(User user, String url, String path, String search, int count,String ext) {
@@ -63,5 +72,37 @@ public class DownloadImage extends User implements Runnable{
             }
         }
 
+    }
+    public static void storeImgDownloadInfo(String search,int timetaken){
+        try{
+
+            System.out.println("storeImgDownloadinfo");
+            Integer id=getUserId(User.currUser.user,User.currUser.pass);
+            DbConnect db = new DbConnect();
+            Connection conn = db.getConnection();
+            System.out.println("insert into downloadimage values("+id+",'"+search+"',"+timetaken+",'"+ LocalDate.now().toString() +"');");
+            PreparedStatement pst = conn.prepareStatement("insert into downloadimage values("+id+",'"+search+"',"+timetaken+",'"+ LocalDate.now().toString() +"');");
+            pst.executeUpdate();
+            System.out.println("Img Record in DB");
+        }
+        catch (Exception ex){
+            System.out.println("Operation failed"+ex);
+        }
+
+    }
+    public static ResultSet findSpeed()
+    {
+        try {
+            System.out.println("storeImgDownloadinfo");
+            Integer id = getUserId(User.currUser.user, User.currUser.pass);
+            DbConnect db = new DbConnect();
+            Connection conn = db.getConnection();
+            PreparedStatement pst = conn.prepareStatement("select taken from downloadimage where id="+id+" order by dod");
+            ResultSet resultSet=pst.executeQuery();
+            return resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

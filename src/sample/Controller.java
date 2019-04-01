@@ -139,6 +139,7 @@ public class Controller implements Initializable{
                     failedDialog(stack1, "Login failed");
                 }
             } else {
+                showSnack("Required field empty");
                 System.out.println("Mandatory fill");
             }
         }catch (Exception ex)
@@ -156,7 +157,7 @@ public class Controller implements Initializable{
         System.out.println("otp:"+otp);
         try {
             if (emailid.getText() != null && emailid.getText().endsWith("@gmail.com")) {
-                SendMail sendMail = new SendMail(emailid.getText(), otp);
+                SendMail sendMail = new SendMail(emailid.getText(), "Your one time password for DownEase : "+otp);
                 sendMail.send();
                 tempMail = emailid.getText();
                 JFXSnackbar snack=new JFXSnackbar(root);
@@ -175,7 +176,8 @@ public class Controller implements Initializable{
 
     }
     @FXML
-    private void checkuser(ActionEvent event) throws FileNotFoundException {
+    private void checkuser(ActionEvent event) throws FileNotFoundException
+    {
         System.out.println("OTP: "+otpverify.getText());
         if(otpverify.getText().equals(otp) && !name.getText().isEmpty() && emailid.getText().equals(tempMail) && !phno.getText().isEmpty() && !loc.getText().isEmpty() && !occ.getText().isEmpty())
         {
@@ -316,6 +318,17 @@ public class Controller implements Initializable{
             }
         };
         snack.show("No internet Connection","Okay",6000,handler);
+    }
+    private void showSnack(String str)
+    {
+        JFXSnackbar snack=new JFXSnackbar(root);
+        EventHandler handler=new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                snack.close();
+            }
+        };
+        snack.show(str,2000);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

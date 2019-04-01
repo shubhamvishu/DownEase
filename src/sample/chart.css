@@ -1,0 +1,15 @@
+.chart-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 2.8em;
+    -fx-font-weight:bold;
+}
+
+.axis-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight:bold;
+    -fx-font-size:16px;
+}
+
+.chart-plot-background {
+    -fx-background-color:transparent;
+}

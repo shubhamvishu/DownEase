@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -33,6 +35,10 @@ import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
@@ -79,9 +85,13 @@ public class MainScreenController implements Initializable {
     @FXML
     private Label userNameLabel;
 
+    @FXML
+    private LineChart speedChart;
+
     private DirectoryChooser dc;
     private File dirPath=null;
     private StringBuilder sb=new StringBuilder("");
+    private int imgcount=0;
 
     private boolean isNetAvailable()
     {
@@ -175,9 +185,26 @@ public class MainScreenController implements Initializable {
                 }
             }
             welcomeDialog(stack1,"Wecome  "+User.currUser.getName());
+            loadGraphs();
+            /*Thread t1=new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    loadGraphs();
+                }
+            });*/
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void loadGraphs()
+    {
+        try{
+            loadSpeedChart();
+        }catch (Exception e)
+        {
             e.printStackTrace();
         }
 
@@ -325,7 +352,11 @@ public class MainScreenController implements Initializable {
             en=System.currentTimeMillis();
             System.out.println("II :"+en);
             System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
-            downloadTime.setText("Download Time : "+String.valueOf(System.currentTimeMillis()-s)+" ms");
+            int timetaken= (int) (System.currentTimeMillis()-s);
+            downloadTime.setText("Download Time : "+String.valueOf(timetaken)+" ms");
+            DownloadImage.storeImgDownloadInfo(searchImg.getText(),timetaken);
+            loadGraphs();
+            imgcount=0;
         } catch (MalformedURLException e) {
             System.out.println(e+"1st");
             // e.printStackTrace();
@@ -418,7 +449,11 @@ public class MainScreenController implements Initializable {
             en=System.currentTimeMillis();
             System.out.println("II :"+en);
             System.out.println(User.currUser.getName()+" RESULT :"+(en-s));
-            downloadTime.setText("Download Time : "+String.valueOf(System.currentTimeMillis()-s)+" ms");
+            int timetaken= (int) (System.currentTimeMillis()-s);
+            downloadTime.setText("Download Time : "+String.valueOf(timetaken)+" ms");
+            DownloadImage.storeImgDownloadInfo(searchImg.getText()+" icon",timetaken);
+            loadGraphs();
+            imgcount=0;
         } catch (MalformedURLException e) {
             System.out.println(e+"1st");
             // e.printStackTrace();
@@ -444,27 +479,35 @@ public class MainScreenController implements Initializable {
     }
     private void addToImglist(String link,String path,String search,int count,String bgcolor )
     {
+        imgcount++;
         System.out.println("ADD"+link+" "+" "+count);
         logArea.clear();
         sb.append("  IMG"+count+" . . . .\n"+"  Sucessfully downloaded"+"\n");
         logArea.setText(sb.toString());
         AnchorPane an=new AnchorPane();
+        an.setPrefWidth(544);
+        an.setPrefHeight(90);
         imgList.setStyle("-fx-background-color:#000;");
         imgList.setExpanded(true);
         imgList.depthProperty().set(1);
         HBox hb=new HBox();
-        an.setPrefWidth(544);
-        an.setPrefHeight(90);
+        JFXButton btn=new JFXButton();
+        btn.setText(String.valueOf(imgcount));
+        btn.setStyle("-fx-background-color:#333;-fx-text-fill:#fff;-fx-font-weight:bold;");
         ImageView im=new ImageView(new Image(link));
         im.setFitWidth(70);
         im.setFitHeight(70);
-        Label lb=new Label("img"+count+"                 ");
+        Label lb=new Label("img"+count+"           ");
         lb.setStyle("-fx-alignment:center;-fx-width:100px;-fx-height:50px;-fx-text-fill:#000;-fx-font-weight:bold;-fx-font-size:20px;-fx-text-align:center;-fx-justify-content:center;");
         lb.setAlignment(Pos.CENTER);
         hb.setAlignment(Pos.CENTER);
-        hb.getChildren().addAll(im,lb);
+        hb.getChildren().addAll(btn,im,lb);
         hb.setSpacing(20);
         JFXButton btn1=new JFXButton("Copy URL");
+        ImageView copyIcon=new ImageView(new Image("sample/img/copy.png"));
+        copyIcon.setFitWidth(15);
+        copyIcon.setFitHeight(15);
+        btn1.setGraphic(copyIcon);
         btn1.addEventHandler(MouseEvent.MOUSE_CLICKED,(e)->{
             Toolkit toolkit=Toolkit.getDefaultToolkit();
             Clipboard clipboard=toolkit.getSystemClipboard();
@@ -506,6 +549,24 @@ public class MainScreenController implements Initializable {
         imgList.depthProperty().set(1);
         System.out.println("ADDED");
     }
+    private void loadSpeedChart() throws SQLException
+    {
+        speedChart.getData().clear();
+        XYChart.Series<String,Number> series=new XYChart.Series<String, Number>();
+        //StringBuilder stb1=new StringBuilder("Month\tNo. of purchases\n");
+        ResultSet result=DownloadImage.findSpeed();
+        int i=0;
+        while (result.next()) {
+            int value=Integer.parseInt(result.getString("taken"));
+            System.out.println(value);
+            Number number1 =value;
+            series.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), number1));
+            i++;
+        }
+        //lab1.setText(stb1.toString());
+        speedChart.getData().addAll(series);
+
+    }
     private void welcomeDialog(StackPane stackPane,String str) throws InterruptedException
     {
         JFXDialogLayout content=new JFXDialogLayout();
@@ -515,7 +576,7 @@ public class MainScreenController implements Initializable {
         lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
         lb.setMinWidth(200);
         lb.setAlignment(Pos.CENTER);
-        ImageView im=new ImageView(new Image("sample/img/confetti.png"));
+        ImageView im=new ImageView(new Image("sample/img/confetti2.png"));
         im.setFitWidth(125);
         im.setFitHeight(125);
         vb.getChildren().addAll(im,lb);
@@ -599,4 +660,16 @@ public class MainScreenController implements Initializable {
         };
         snack.show("No internet Connection","Okay",6000,handler);
     }
+    private void showSnack(String str)
+    {
+        JFXSnackbar snack=new JFXSnackbar(imgApp);
+        EventHandler handler=new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                snack.close();
+            }
+        };
+        snack.show(str,2000);
+    }
+
 }
