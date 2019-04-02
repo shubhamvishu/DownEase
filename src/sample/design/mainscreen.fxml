@@ -10,6 +10,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
@@ -143,24 +144,50 @@
                                                    <children>
                                                       <ScrollPane prefHeight="516.0" prefWidth="868.0">
                                                          <content>
-                                                            <AnchorPane prefHeight="1400.0" prefWidth="864.0" style="-fx-background-color:#2C4055;">
+                                                            <AnchorPane prefHeight="1231.0" prefWidth="864.0" style="-fx-background-color: #34495E;">
                                                                <children>
-                                                                  <LineChart fx:id="speedChart" layoutX="232.0" layoutY="74.0" prefHeight="407.0" prefWidth="590.0" style="-fx-vertical-grid-lines-visible: false; -fx-horizontal-grid-lines-visible: false;" stylesheets="@../chart.css" title="Image Downloads">
+                                                                  <LineChart fx:id="speedChartImage" layoutX="31.0" layoutY="93.0" prefHeight="463.0" prefWidth="791.0" style="-fx-vertical-grid-lines-visible: false; -fx-horizontal-grid-lines-visible: false;" stylesheets="@../chart.css" title="Image Downloads">
                                                                      <xAxis>
                                                                         <CategoryAxis label="Downloads" style="-fx-font-weight: bold;" tickLabelFill="WHITE">
                                                                            <tickLabelFont>
-                                                                              <Font name="System Bold" size="8.0" />
+                                                                              <Font name="Noto Sans CJK KR Bold" size="8.0" />
                                                                            </tickLabelFont>
                                                                         </CategoryAxis>
                                                                      </xAxis>
                                                                      <yAxis>
                                                                         <NumberAxis label="Speed (ms)" prefHeight="314.0" prefWidth="64.0" side="LEFT" style="-fx-text-fill: #fff; -fx-font-weight: bold;" tickLabelFill="WHITE" upperBound="50000.0">
                                                                            <tickLabelFont>
-                                                                              <Font name="System Bold" size="8.0" />
+                                                                              <Font name="Noto Sans CJK KR Bold" size="8.0" />
                                                                            </tickLabelFont>
                                                                         </NumberAxis>
                                                                      </yAxis>
                                                                   </LineChart>
+                                                                  <JFXButton layoutX="662.0" layoutY="562.0" onAction="#loadSpeedChartImage" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #37CA49;" text="Reload" textFill="#f9fffb">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../img/reload2.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                  </JFXButton>
+                                                                  <PieChart fx:id="pieChartImage" layoutX="235.0" layoutY="628.0" legendSide="LEFT" prefHeight="460.0" prefWidth="550.0" stylesheets="@../chart.css" title="Downloads Each Month" />
+                                                                  <JFXButton layoutX="662.0" layoutY="1148.0" onAction="#loadPieDistChartImage" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #37CA49;" text="Reload" textFill="#f9fffb">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../img/reload2.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                  </JFXButton>
+                                                                  <JFXTextArea fx:id="pieChartAreaImg" layoutX="11.0" layoutY="732.0" prefHeight="416.0" prefWidth="183.0" style="-fx-background-color: #212F3D; -fx-text-fill: #eeeeee; -fx-font-weight: bold;" />
                                                                </children>
                                                             </AnchorPane>
                                                          </content>

@@ -93,11 +93,24 @@ public class DownloadImage extends User implements Runnable{
     public static ResultSet findSpeed()
     {
         try {
-            System.out.println("storeImgDownloadinfo");
             Integer id = getUserId(User.currUser.user, User.currUser.pass);
             DbConnect db = new DbConnect();
             Connection conn = db.getConnection();
-            PreparedStatement pst = conn.prepareStatement("select taken from downloadimage where id="+id+" order by dod");
+            PreparedStatement pst = conn.prepareStatement("select search,taken from downloadimage where id="+id+" order by dod");
+            ResultSet resultSet=pst.executeQuery();
+            return resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ResultSet downloadsByDate()
+    {
+        try {
+            Integer id = getUserId(User.currUser.user, User.currUser.pass);
+            DbConnect db = new DbConnect();
+            Connection conn = db.getConnection();
+            PreparedStatement pst = conn.prepareStatement("select month(dod),count(search) from downloadimage where id="+id+" group by month(dod);");
             ResultSet resultSet=pst.executeQuery();
             return resultSet;
         } catch (SQLException e) {

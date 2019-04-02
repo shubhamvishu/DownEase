@@ -1,15 +1,24 @@
 .chart-title {
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 2.8em;
+    -fx-text-fill: #42FFDA;
+    -fx-font-size: 2.4em;
     -fx-font-weight:bold;
+    -fx-padding:20px;
 }
 
 .axis-label {
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #fff;
     -fx-font-weight:bold;
     -fx-font-size:16px;
 }
 
 .chart-plot-background {
     -fx-background-color:transparent;
+}
+.chart-pie-label {
+    -fx-fill: #fff;
+    -fx-font-size: 1em;
+    -fx-font-weight:bold;
+}
+.chart-legend {
+   -fx-background-color:#EBF5FB;
 }

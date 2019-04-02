@@ -3,6 +3,7 @@ package sample;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -12,10 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -86,7 +89,11 @@ public class MainScreenController implements Initializable {
     private Label userNameLabel;
 
     @FXML
-    private LineChart speedChart;
+    private LineChart speedChartImage;
+    @FXML
+    private PieChart pieChartImage;
+    @FXML
+    private JFXTextArea pieChartAreaImg;
 
     private DirectoryChooser dc;
     private File dirPath=null;
@@ -126,6 +133,9 @@ public class MainScreenController implements Initializable {
             userNameLabel.setText("  "+User.currUser.getName());
             imgTypeCombobox.setItems(FXCollections.observableArrayList("Image","Icon"));
             imgTypeCombobox.setValue("Image");
+            searchImg.textProperty().addListener((observable, oldValue, newValue) -> {
+                System.out.println("textfield changed from " + oldValue + " to " + newValue);
+            });
             HamburgerBackArrowBasicTransition burger1=new HamburgerBackArrowBasicTransition(ham);
             drawer.open();
             burger1.setRate(1);
@@ -184,7 +194,7 @@ public class MainScreenController implements Initializable {
                     }
                 }
             }
-            welcomeDialog(stack1,"Wecome  "+User.currUser.getName());
+            welcomeDialog(stack1,"    Wecome  "+User.currUser.getName());
             loadGraphs();
             /*Thread t1=new Thread(new Runnable() {
                 @Override
@@ -202,7 +212,9 @@ public class MainScreenController implements Initializable {
     private void loadGraphs()
     {
         try{
-            loadSpeedChart();
+            loadSpeedChartImage();
+            loadPieDistChartImage();
+
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -549,23 +561,56 @@ public class MainScreenController implements Initializable {
         imgList.depthProperty().set(1);
         System.out.println("ADDED");
     }
-    private void loadSpeedChart() throws SQLException
+    @FXML
+    private void loadSpeedChartImage() throws SQLException
     {
-        speedChart.getData().clear();
+        speedChartImage.getData().clear();
         XYChart.Series<String,Number> series=new XYChart.Series<String, Number>();
-        //StringBuilder stb1=new StringBuilder("Month\tNo. of purchases\n");
+        StringBuilder stb=new StringBuilder(" SEARCH"+"\t\t\t\t"+"SPEED\n\n");
         ResultSet result=DownloadImage.findSpeed();
         int i=0;
         while (result.next()) {
             int value=Integer.parseInt(result.getString("taken"));
             System.out.println(value);
             Number number1 =value;
+            stb.append(" "+result.getString("search")+"\t\t\t"+value+"\n");
             series.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), number1));
             i++;
         }
         //lab1.setText(stb1.toString());
-        speedChart.getData().addAll(series);
+        speedChartImage.getData().addAll(series);
 
+        for(final XYChart.Data<String,Number> data:series.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    //System.out.println("X : "+data.getXValue()+"\nY : "+data.getYValue());
+                    Tooltip.install(data.getNode(),new Tooltip("X : "+data.getXValue()+"\nY : "+data.getYValue()));
+                }
+            });
+        }
+
+    }
+    @FXML
+    private void loadPieDistChartImage() throws SQLException
+    {
+        ObservableList<PieChart.Data> list=FXCollections.observableArrayList();
+        pieChartImage.getData().clear();
+        StringBuilder stb=new StringBuilder("\n");
+        stb.append(" Mon"+"\t\t"+"Downloads\n  -------------------------------\n\n");
+        ResultSet resultSet=DownloadImage.downloadsByDate();
+        while (resultSet.next())
+        {
+            Integer month=Integer.parseInt(resultSet.getString("month(dod)"));
+            String months[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
+            String reqMonth=months[month-1];
+            Integer num=Integer.parseInt(resultSet.getString("count(search)"));
+            stb.append("  "+reqMonth.substring(0,3)+"        "+num+"\n");
+            list.add(new PieChart.Data(reqMonth,num));
+
+        }
+        pieChartImage.setData(list);
+        pieChartAreaImg.setText(stb.toString());
     }
     private void welcomeDialog(StackPane stackPane,String str) throws InterruptedException
     {
@@ -573,19 +618,19 @@ public class MainScreenController implements Initializable {
         VBox vb=new VBox();
         vb.setSpacing(30);
         Label lb=new Label(str);
-        lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-prewf-width:300px;");
+        lb.setStyle("-fx-font-weight:bold;-fx-text-fill:#000;-fx-pref-width:300px;");
         lb.setMinWidth(200);
         lb.setAlignment(Pos.CENTER);
         ImageView im=new ImageView(new Image("sample/img/confetti2.png"));
-        im.setFitWidth(125);
-        im.setFitHeight(125);
+        im.setFitWidth(150);
+        im.setFitHeight(150);
         vb.getChildren().addAll(im,lb);
-        content.setStyle("-fx-background-color:#fff;-fx-pref-width:150px;-fx-pref-height:200px;-fx-text-fill:#000;-fx-text-color:#000;");
+        content.setStyle("-fx-background-color:#fff;-fx-pref-width:350px;-fx-pref-height:200px;-fx-text-fill:#000;-fx-text-color:#000;");
         content.setBody(vb);
         JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
         dialog.setContent(content);
-        JFXButton button = new JFXButton("Lets Go");
-        button.setStyle("-fx-background-color:#333;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+        JFXButton button = new JFXButton(" Lets Get Started ");
+        button.setStyle("-fx-background-color:#3498DB;-fx-text-fill:#fff;-fx-font-weight:bold;-fx-pref-width:150px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

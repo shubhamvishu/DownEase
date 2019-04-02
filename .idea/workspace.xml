@@ -2,38 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$6.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DownEase/sample/chart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DownEase/sample/img/copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DownEase/sample/img/paper.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/chart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/img/copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/img/paper.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/img/photo3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/img/photo4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/img/reload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/img/reload2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/DownloadImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/DownloadImage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/MainScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/chart.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/design/mainscreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/design/mainscreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DownEase/sample/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DownEase/sample/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/DownloadImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DownloadImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/chart.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/design/mainscreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/design/mainscreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/style.css" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,32 +89,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/MainScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="445" column="12" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="12" />
+            <state relative-caret-position="372">
+              <caret line="608" column="54" lean-forward="true" selection-start-line="608" selection-start-column="54" selection-end-line="608" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#addnew1#0;class#MainScreenController#0" />
                 <element signature="method#addnew2#0;class#MainScreenController#0" />
-                <element signature="e#8761#8762#0" expanded="true" />
-                <element signature="e#8803#8804#0" expanded="true" />
                 <element signature="method#chooseDirectory#0;class#MainScreenController#0" />
                 <element signature="method#addToImglist#0;class#MainScreenController#0" />
-                <element signature="e#19700#19701#0" expanded="true" />
-                <element signature="e#19754#19755#0" expanded="true" />
-                <element signature="e#20246#20262#0" expanded="true" />
                 <element signature="method#welcomeDialog#0;class#MainScreenController#0" />
                 <element signature="method#successDialog#0;class#MainScreenController#0" />
-                <element signature="e#23509#23510#0" expanded="true" />
-                <element signature="e#23555#23556#0" expanded="true" />
                 <element signature="method#failedDialog#0;class#MainScreenController#0" />
-                <element signature="e#24679#24680#0" expanded="true" />
-                <element signature="e#24725#24726#0" expanded="true" />
                 <element signature="method#showNoConnection#0;class#MainScreenController#0" />
-                <element signature="e#25013#25014#0" expanded="true" />
-                <element signature="e#25058#25059#0" expanded="true" />
                 <element signature="method#showSnack#0;class#MainScreenController#0" />
-                <element signature="e#25355#25356#0" expanded="true" />
-                <element signature="e#25400#25401#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,12 +110,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="283">
               <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
+            <state relative-caret-position="56">
+              <caret line="127" column="100" lean-forward="true" selection-start-line="127" selection-start-column="100" selection-end-line="127" selection-end-column="100" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#newuser#0;class#Controller#0" />
@@ -169,38 +139,41 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/design/mainscreen.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="147" column="294" selection-start-line="147" selection-start-column="294" selection-end-line="147" selection-end-column="294" />
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="194" column="75" selection-start-line="194" selection-start-column="75" selection-end-line="194" selection-end-column="75" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/img/photo2.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/DownloadImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="99" column="107" selection-start-line="99" selection-start-column="107" selection-end-line="99" selection-end-column="107" />
+            <state relative-caret-position="12">
+              <caret line="98" column="73" selection-start-line="98" selection-start-column="73" selection-end-line="98" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-                <element signature="e#751#752#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/design/vbox.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/chart.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -229,6 +202,7 @@
       <find>Snack</find>
       <find>confe</find>
       <find>photo</find>
+      <find>speed</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -256,11 +230,11 @@
         <option value="$PROJECT_DIR$/src/sample/snack.css" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/User.java" />
-        <option value="$PROJECT_DIR$/src/sample/MainScreenController.java" />
         <option value="$PROJECT_DIR$/src/sample/style.css" />
-        <option value="$PROJECT_DIR$/src/sample/design/mainscreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/chart.css" />
         <option value="$PROJECT_DIR$/src/sample/DownloadImage.java" />
+        <option value="$PROJECT_DIR$/src/sample/chart.css" />
+        <option value="$PROJECT_DIR$/src/sample/MainScreenController.java" />
+        <option value="$PROJECT_DIR$/src/sample/design/mainscreen.fxml" />
       </list>
     </option>
   </component>
@@ -280,7 +254,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,7 +284,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,7 +307,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sample/img" />
       <recent name="$PROJECT_DIR$/src/sample/design" />
       <recent name="$PROJECT_DIR$/src/sample" />
@@ -341,7 +315,7 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sample" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sample/img" />
       <recent name="$PROJECT_DIR$/src/sample/design" />
       <recent name="$PROJECT_DIR$/src/sample" />
@@ -453,7 +427,7 @@
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.13920645" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.14122394" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -745,14 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/design/vbox.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/img/user.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -767,10 +733,84 @@
     <entry file="file://$PROJECT_DIR$/src/sample/img/confetti2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/img/photo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/img/photo3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/img/photo4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/img/photo2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/design/vbox.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DownloadImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="98" column="73" selection-start-line="98" selection-start-column="73" selection-end-line="98" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="608" column="54" lean-forward="true" selection-start-line="608" selection-start-column="54" selection-end-line="608" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addnew1#0;class#MainScreenController#0" />
+            <element signature="method#addnew2#0;class#MainScreenController#0" />
+            <element signature="method#chooseDirectory#0;class#MainScreenController#0" />
+            <element signature="method#addToImglist#0;class#MainScreenController#0" />
+            <element signature="method#welcomeDialog#0;class#MainScreenController#0" />
+            <element signature="method#successDialog#0;class#MainScreenController#0" />
+            <element signature="method#failedDialog#0;class#MainScreenController#0" />
+            <element signature="method#showNoConnection#0;class#MainScreenController#0" />
+            <element signature="method#showSnack#0;class#MainScreenController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/design/mainscreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="194" column="75" selection-start-line="194" selection-start-column="75" selection-end-line="194" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
+        <state relative-caret-position="56">
+          <caret line="127" column="100" lean-forward="true" selection-start-line="127" selection-start-column="100" selection-end-line="127" selection-end-column="100" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#newuser#0;class#Controller#0" />
@@ -783,93 +823,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/img/photo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/img/photo2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/img/photo3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/img/photo4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/design/mainscreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="147" column="294" selection-start-line="147" selection-start-column="294" selection-end-line="147" selection-end-column="294" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/chart.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="445" column="12" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addnew1#0;class#MainScreenController#0" />
-            <element signature="method#addnew2#0;class#MainScreenController#0" />
-            <element signature="e#8761#8762#0" expanded="true" />
-            <element signature="e#8803#8804#0" expanded="true" />
-            <element signature="method#chooseDirectory#0;class#MainScreenController#0" />
-            <element signature="method#addToImglist#0;class#MainScreenController#0" />
-            <element signature="e#19700#19701#0" expanded="true" />
-            <element signature="e#19754#19755#0" expanded="true" />
-            <element signature="e#20246#20262#0" expanded="true" />
-            <element signature="method#welcomeDialog#0;class#MainScreenController#0" />
-            <element signature="method#successDialog#0;class#MainScreenController#0" />
-            <element signature="e#23509#23510#0" expanded="true" />
-            <element signature="e#23555#23556#0" expanded="true" />
-            <element signature="method#failedDialog#0;class#MainScreenController#0" />
-            <element signature="e#24679#24680#0" expanded="true" />
-            <element signature="e#24725#24726#0" expanded="true" />
-            <element signature="method#showNoConnection#0;class#MainScreenController#0" />
-            <element signature="e#25013#25014#0" expanded="true" />
-            <element signature="e#25058#25059#0" expanded="true" />
-            <element signature="method#showSnack#0;class#MainScreenController#0" />
-            <element signature="e#25355#25356#0" expanded="true" />
-            <element signature="e#25400#25401#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DownloadImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="99" column="107" selection-start-line="99" selection-start-column="107" selection-end-line="99" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="12" />
         </state>
       </provider>
     </entry>
