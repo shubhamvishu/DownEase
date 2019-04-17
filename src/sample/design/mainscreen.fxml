@@ -34,7 +34,7 @@
             <Image url="@../img/space.png" />
          </image>
       </ImageView>
-      <StackPane layoutY="84.0">
+      <StackPane fx:id="outerStackPane" layoutY="84.0">
          <children>
             <JFXTabPane fx:id="docTab" prefHeight="546.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>

@@ -50,6 +50,8 @@ public class MainScreenController implements Initializable {
 
     public static User current;
     @FXML
+    private StackPane outerStackPane;
+    @FXML
     private StackPane stack1;
     @FXML
     private AnchorPane imgApp;
@@ -705,7 +707,7 @@ public class MainScreenController implements Initializable {
         label.setStyle("-fx-text-fill:#fff;-fx-font-weight:bold;-fx-font-size:18px;-fx-alignment:center;-fx-font-family:Lato;");
         label.setAlignment(Pos.CENTER);
         content.setBody(label);
-        JFXDialog dialog = new JFXDialog(stack1, content, JFXDialog.DialogTransition.TOP);
+        JFXDialog dialog = new JFXDialog(outerStackPane, content, JFXDialog.DialogTransition.TOP);
         content.setStyle("-fx-background-color:#8000FF;-fx-pref-width:400px;-fx-pref-height:160px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
         dialog.setContent(content);
         JFXButton yesBtn = new JFXButton("Yes");
