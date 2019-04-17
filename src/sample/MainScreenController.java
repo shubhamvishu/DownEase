@@ -134,7 +134,6 @@ public class MainScreenController implements Initializable {
 
         try {
 
-            if(!User.currUser.getName().isEmpty())
             userNameLabel.setText("  "+User.currUser.getName());
             imgTypeCombobox.setItems(FXCollections.observableArrayList("Image","Icon"));
             imgTypeCombobox.setValue("Image");
@@ -157,6 +156,7 @@ public class MainScreenController implements Initializable {
                 }
 
             });
+            current=new User();
             VBox box= FXMLLoader.load(getClass().getResource("design/vbox.fxml"));
             drawer.setSidePane(box);
             for(Node node: box.getChildren())
@@ -354,7 +354,7 @@ public class MainScreenController implements Initializable {
             System.out.println("I :"+s);
             for(Element e:link) {
                 count++;
-                //System.out.print(count++ +" ");
+                //System.out.println("start");
                 //System.out.println(e.attr("data-src"));
                 DownloadImage di=new DownloadImage(current,e.attr("data-src"),newdir.getAbsolutePath(),searchImg.getText(),count,".jpg");
                 if(!e.attr("data-src").isEmpty())
@@ -362,7 +362,7 @@ public class MainScreenController implements Initializable {
                 Thread t=new Thread(di);
                 t.start();
 
-                //System.out.println("end"+count);
+                //System.out.println("end");
 
             }
             Thread.sleep(1000);

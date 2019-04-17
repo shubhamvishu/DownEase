@@ -80,7 +80,7 @@
                                                          <children>
                                                             <AnchorPane fx:id="imgApp" prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                                <children>
-                                                                  <JFXListView fx:id="imgList" layoutX="250.0" layoutY="147.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #111; -fx-background-radius: 3px;" />
+                                                                  <JFXListView fx:id="imgList" layoutX="250.0" layoutY="147.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #031C33; -fx-background-radius: 3px;" />
                                                                   <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="82.0" onAction="#downloadFile" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
                                                                      <font>
                                                                         <Font name="System Bold" size="13.0" />
@@ -216,14 +216,14 @@
       <JFXHamburger fx:id="ham" layoutX="800.0" layoutY="150.0" stylesheets="@../style.css" />
       <HBox layoutX="681.0" layoutY="28.0" onMouseClicked="#temp" prefHeight="35.0" prefWidth="184.0">
          <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #263B50;">
                <image>
                   <Image url="@../img/user2.png" />
                </image>
             </ImageView>
-            <Label fx:id="userNameLabel" prefHeight="35.0" prefWidth="155.0" textFill="#aac3dd">
+            <Label fx:id="userNameLabel" alignment="CENTER" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: #263B50;" text="shubham" textAlignment="CENTER" textFill="#aac3dd">
                <font>
-                  <Font name="Kinnari" size="13.0" />
+                  <Font name="Manjari Bold" size="14.0" />
                </font></Label>
          </children>
       </HBox>

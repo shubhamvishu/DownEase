@@ -50,7 +50,7 @@ public class DownloadImage extends User implements Runnable{
     @Override
     public void run() {
         if(true) {
-            try {//System.out.println("start"+count);
+            try {//System.out.println("start func");
                 //System.out.println(url);
                 URL link = new URL(url);
                 InputStream in = new BufferedInputStream(link.openStream());
@@ -60,7 +60,7 @@ public class DownloadImage extends User implements Runnable{
                 }
                 in.close();
                 out.close();
-                //System.out.println("end"+count);
+                //System.out.println("end func"+count);
                 //count++;
             } catch (MalformedURLException ex) {
                 System.out.println(ex+" Wrong URL");
