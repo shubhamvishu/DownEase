@@ -80,7 +80,7 @@
                                                          <children>
                                                             <AnchorPane fx:id="imgApp" prefHeight="516.0" prefWidth="900.0" style="-fx-background-color: #2C4055;">
                                                                <children>
-                                                                  <JFXListView fx:id="imgList" layoutX="250.0" layoutY="147.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #222;" />
+                                                                  <JFXListView fx:id="imgList" layoutX="250.0" layoutY="147.0" prefHeight="303.0" prefWidth="544.0" style="-fx-background-color: #111; -fx-background-radius: 3px;" />
                                                                   <JFXButton fx:id="downImgBtn" layoutX="250.0" layoutY="82.0" onAction="#downloadFile" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: #4ed64e;" text="Download" textFill="#f9fffb">
                                                                      <font>
                                                                         <Font name="System Bold" size="13.0" />
@@ -103,14 +103,14 @@
                                                                         <Image url="@../img/folder.png" />
                                                                      </image>
                                                                   </ImageView>
-                                                                  <JFXTextArea fx:id="logArea" layoutX="23.0" layoutY="225.0" prefHeight="270.0" prefWidth="199.0" style="-fx-background-color: #031C33; -fx-text-fill: #5D6D7E;" />
-                                                                  <Label fx:id="logLabel" alignment="CENTER" layoutX="24.0" layoutY="192.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: #3600ff;" text="Log" textFill="WHITE">
+                                                                  <JFXTextArea fx:id="logArea" layoutX="23.0" layoutY="338.0" prefHeight="157.0" prefWidth="199.0" style="-fx-background-color: #031C33; -fx-text-fill: #5D6D7E;" />
+                                                                  <Label fx:id="logLabel" alignment="CENTER" layoutX="24.0" layoutY="304.0" prefHeight="34.0" prefWidth="198.0" style="-fx-background-color: #566573; -fx-background-radius: 15px 15px 0px 0px;" text="Log" textFill="WHITE">
                                                                      <font>
                                                                         <Font name="System Bold" size="13.0" />
                                                                      </font>
                                                                   </Label>
                                                                   <JFXComboBox fx:id="imgTypeCombobox" layoutX="251.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0" promptText="  Type" style="-fx-background-color: #ddd; -fx-font-weight: bold;" />
-                                                                  <Label fx:id="pathLabel" layoutX="416.0" layoutY="87.0" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #212F3D; -fx-text-fill: #fff;">
+                                                                  <Label fx:id="pathLabel" layoutX="416.0" layoutY="87.0" prefHeight="32.0" prefWidth="278.0" style="-fx-background-color: #212F3D; -fx-text-fill: #fff; -fx-background-radius: 5px;">
                                                                      <font>
                                                                         <Font name="System Bold" size="13.0" />
                                                                      </font>
@@ -125,11 +125,16 @@
                                                                         <Image url="@../img/search.png" />
                                                                      </image>
                                                                   </ImageView>
-                                                                  <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="60.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <ImageView fitHeight="170.0" fitWidth="170.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
-                                                                        <Image url="@../img/photo.png" />
+                                                                        <Image url="@../img/photo4.png" />
                                                                      </image>
                                                                   </ImageView>
+                                                                  <Label alignment="CENTER" layoutX="24.0" layoutY="200.0" prefHeight="54.0" prefWidth="178.0" text="ImageD" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font name="Dyuthi" size="36.0" />
+                                                                     </font>
+                                                                  </Label>
                                                                </children>
                                                             </AnchorPane>
                                                          </children>
@@ -144,7 +149,7 @@
                                                    <children>
                                                       <ScrollPane prefHeight="516.0" prefWidth="868.0">
                                                          <content>
-                                                            <AnchorPane prefHeight="1231.0" prefWidth="864.0" style="-fx-background-color: #34495E;">
+                                                            <AnchorPane prefHeight="1231.0" prefWidth="864.0" style="-fx-background-color: #263B50;">
                                                                <children>
                                                                   <LineChart fx:id="speedChartImage" layoutX="31.0" layoutY="93.0" prefHeight="463.0" prefWidth="791.0" style="-fx-vertical-grid-lines-visible: false; -fx-horizontal-grid-lines-visible: false;" stylesheets="@../chart.css" title="Image Downloads">
                                                                      <xAxis>
@@ -218,7 +223,7 @@
             </ImageView>
             <Label fx:id="userNameLabel" prefHeight="35.0" prefWidth="155.0" textFill="#aac3dd">
                <font>
-                  <Font name="Noto Sans CJK SC Bold" size="13.0" />
+                  <Font name="Kinnari" size="13.0" />
                </font></Label>
          </children>
       </HBox>

@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -130,6 +132,7 @@ public class MainScreenController implements Initializable {
 
         try {
 
+            if(!User.currUser.getName().isEmpty())
             userNameLabel.setText("  "+User.currUser.getName());
             imgTypeCombobox.setItems(FXCollections.observableArrayList("Image","Icon"));
             imgTypeCombobox.setValue("Image");
@@ -152,8 +155,6 @@ public class MainScreenController implements Initializable {
                 }
 
             });
-
-            current=new User("aditya","abbc123@gmail.com","72982","bangalore","officer");
             VBox box= FXMLLoader.load(getClass().getResource("design/vbox.fxml"));
             drawer.setSidePane(box);
             for(Node node: box.getChildren())
@@ -186,6 +187,9 @@ public class MainScreenController implements Initializable {
                                             burger1.setRate(burger1.getRate()*-1);
                                             burger1.play();
                                             drawer.close();
+                                            break;
+                                        case "Logout":
+                                            logoutDialog();
                                             break;
                                     }
                                 });
@@ -571,7 +575,6 @@ public class MainScreenController implements Initializable {
         int i=0;
         while (result.next()) {
             int value=Integer.parseInt(result.getString("taken"));
-            System.out.println(value);
             Number number1 =value;
             stb.append(" "+result.getString("search")+"\t\t\t"+value+"\n");
             series.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), number1));
@@ -597,7 +600,7 @@ public class MainScreenController implements Initializable {
         ObservableList<PieChart.Data> list=FXCollections.observableArrayList();
         pieChartImage.getData().clear();
         StringBuilder stb=new StringBuilder("\n");
-        stb.append(" Mon"+"\t\t"+"Downloads\n  -------------------------------\n\n");
+        stb.append("  Mon"+"\t\t"+"Downloads\n  -------------------------------\n\n");
         ResultSet resultSet=DownloadImage.downloadsByDate();
         while (resultSet.next())
         {
@@ -605,7 +608,7 @@ public class MainScreenController implements Initializable {
             String months[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
             String reqMonth=months[month-1];
             Integer num=Integer.parseInt(resultSet.getString("count(search)"));
-            stb.append("  "+reqMonth.substring(0,3)+"        "+num+"\n");
+            stb.append("  "+reqMonth.substring(0,3)+"          "+num+"\n");
             list.add(new PieChart.Data(reqMonth,num));
 
         }
@@ -692,6 +695,48 @@ public class MainScreenController implements Initializable {
             }
         });
         content.setActions(button);
+        dialog.show();
+    }
+    private void logoutDialog()
+    {
+        JFXDialogLayout content = new JFXDialogLayout();
+        HBox hb=new HBox();
+        Label label = new Label("Are you sure you want to logout?");
+        label.setStyle("-fx-text-fill:#fff;-fx-font-weight:bold;-fx-font-size:18px;-fx-alignment:center;-fx-font-family:Lato;");
+        label.setAlignment(Pos.CENTER);
+        content.setBody(label);
+        JFXDialog dialog = new JFXDialog(stack1, content, JFXDialog.DialogTransition.TOP);
+        content.setStyle("-fx-background-color:#8000FF;-fx-pref-width:400px;-fx-pref-height:160px;-fx-text-fill:#ff0000;-fx-text-color:#ff0000;");
+        dialog.setContent(content);
+        JFXButton yesBtn = new JFXButton("Yes");
+        yesBtn.setStyle("-fx-background-color:#eee;-fx-text-fill:#000;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+        yesBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Controller.primaryStage.close();
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("design/login.fxml"));
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add(SplashController.class.getResource("snack.css").toExternalForm());
+                    SplashController.loginStage.setTitle("DownEase");
+                    SplashController.loginStage.resizableProperty().setValue(false);
+                    SplashController.loginStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
+                    SplashController.loginStage.setScene(scene);
+                    SplashController.loginStage.show();
+                }catch (Exception ex){
+                    System.out.println("Error opening stage");
+                }
+            }
+        });
+        JFXButton cancelBtn = new JFXButton("Cancel");
+        cancelBtn.setStyle("-fx-background-color:#eee;-fx-text-fill:#000;-fx-font-weight:bold;-fx-pref-width:100px;-fx-pref-height:40px;-fx-background-radius:20px;-fx-border-radius:20px;");
+        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+        content.setActions(yesBtn,cancelBtn);
         dialog.show();
     }
     private void showNoConnection()

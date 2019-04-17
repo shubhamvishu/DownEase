@@ -53,7 +53,7 @@ public class User {
             boolean b=false;
             while(res.next())
             {   b=true;
-                System.out.println("User found");
+                //System.out.println("User found");
                 System.out.println(res.getString("id"));
                 this.name=res.getString("name");
                 this.emailid=res.getString("email");
