@@ -54,7 +54,6 @@ public class User {
             while(res.next())
             {   b=true;
                 //System.out.println("User found");
-                System.out.println(res.getString("id"));
                 this.name=res.getString("name");
                 this.emailid=res.getString("email");
                 this.emailid=res.getString("phno");
@@ -71,7 +70,7 @@ public class User {
         }
         catch (SQLException sq)
         {
-            System.out.println("Invalid syntax");
+            System.out.println("Invalid syntax"+sq);
         }
         return false;
     }
@@ -87,7 +86,7 @@ public class User {
         }
         catch (SQLException sq)
         {
-            System.out.println("Invalid syntax ,operation failed");
+            System.out.println("Invalid syntax ,operation failed"+sq);
         }
 
     }
@@ -105,7 +104,7 @@ public class User {
         }
         catch (Exception ex)
         {
-            System.out.println("No user founf");
+            System.out.println("No user found");
         }
         return 0;
     }

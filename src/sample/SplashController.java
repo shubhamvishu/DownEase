@@ -42,7 +42,7 @@ public class SplashController implements Initializable {
                             scene.getStylesheets().add(SplashController.class.getResource("snack.css").toExternalForm());
                             loginStage.setTitle("DownEase");
                             loginStage.resizableProperty().setValue(false);
-                            loginStage.getIcons().add(new Image("sample/img/astronaut-2.png"));
+                            loginStage.getIcons().add(new Image("sample/img/space.png"));
                             loginStage.setScene(scene);
                             loginStage.show();
                             rootPane.getScene().getWindow().hide();

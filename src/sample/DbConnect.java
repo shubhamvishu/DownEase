@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DbConnect {
 
-    private static String url="jdbc:mysql://localhost:3306/downease?useSSL=false";
-    private static String user="root";
-    private static String pass="shubham";
+    private static String url="jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12295723?useSSL=false";
+    private static String user="sql12295723";
+    private static String pass="Bm9bb6ecwQ";
 
    /* public DbConnect(String urldb,String username,String password)
     {
@@ -22,6 +22,7 @@ public class DbConnect {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn= DriverManager.getConnection(url,user,pass);
+            System.out.println("CONNECTED");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
