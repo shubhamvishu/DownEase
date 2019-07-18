@@ -225,7 +225,7 @@ public class Controller implements Initializable{
                             System.out.println();
                             curr.addNewUser();
                             dialog.close();
-                            successDialog(stack2,"Signin succesfull");
+                            successDialog(stack2,"SignUp succesfull");
                             clearSignUp();
                         }
 
